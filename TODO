@@ -1,0 +1,18 @@
+* Revoir la doc de toutes les classes - Corriger les fautes d'orthographe et de frappe. Rajouter des @Override
+* Ajouter des explications dans la documentation sur le fonctionnement des méthodes
+* Commenter le code qui ne l'est pas assez.
+* Ajouter la possibilité de jouer à la manette ? voir la bibliothqèue lwjgl ?
+* Revoir l'organisation des classes : Animation hérite de Texture ou Texture hérite d'Animation ?
+* Possibilité d'avoir des hitbox
+* Possibilité d'inverser la Texture (symétrie verticale)
+* Pouvoir régler l'opacité de la texture (par exemple, une nuance de transparence et non un boolean)
+* Pouvoir modifier le volume des sons et musiques
+* Pouvoir instancier une animation à partir d'une planche de plusieurs images les unes derrière les autres.
+* Pouvoir rendre une texture invisible
+* Créer la classe FenetrePleinEcran (voir la classe Fenetre au dessus du premier constructeur
+* Mettre la musique en pause
+* Modifier l'épaisseur des lignes ?
+* Régler le volume du son
+* Apparemment, il y a un bug lorsque l'on teste l'intersection entre un Triangle et une Texture
+* Pouvoir modifier l'icone de l'application
+* Pouvoir justifier les objets Texte à droite, à gauche ou centrer
