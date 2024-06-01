@@ -1,0 +1,60 @@
+Installation de MG2D ou MG3D (ou les deux) pour Windows, Linux et MacOS.
+
+
+* Pour obtenir la bibliothèque sous forme d'un fichier jar, veuillez lancer la commande ant. Le fichier se trouvera dans le répertoire build/jar/.
+
+
+* Si vous préférez utiliser directement le code source.
+
+0 - Installez le jdk pour votre système d'exploitation. Vous trouverez des tutos sur internet si nécessaire. Vous devez pouvoir utiliser les commandes java et javac dans un terminal.
+
+1 - Téléchargez MG2D ou MG3D (ou les deux) à l'aide des liens ci-dessous ou de toute autre version plus récente.
+    http://www-lisic.univ-littoral.fr/~synave/MG2D_2.85.zip
+    http://www-lisic.univ-littoral.fr/~synave/MG3D_0.2.zip
+
+2 - Décompressez l'archive où vous voulez
+
+3 - Dans le répertoire MG2D_2.85 (ou MG3D_0.2) qui vient d'être décompressé se trouve un répertoire MG2D (ou MG3D). Coupez ce répertoire (MG2D ou MG3D et pas MG2D_2.85 ou MG3D_0.2 !!!!!) et collez le dans votre répertoire personnel.
+    Sous Windows, votre répertoire personnel doit être C:\Users\votreNomDUtilisateur ou %userprofile%
+    Sous Linux, le chemin doit être /home/votreNomDUtilisateur ou ~
+    Sous MacOS, le chemin doit être ~ (ou peut être quelque chose d'autre).
+
+4 - Il faut modifier la variable d'environnement CLASSPATH pour qu'elle contienne . et votre répertoire personnel.
+
+    4.1 - Sous Windows
+          Dans la barre de recherche, tapez le mot "variable" puis sur "Modifier les variables d'environnement système".
+          Dans l'onglet "Paramètres système avancés", cliquez tout en bas sur "Variables d'environnement..."
+          Dans le cadre du haut "Variables utilisateur pour votreNomDUtilisateur", si la variable CLASSPATH existe, cliquez dessus puis "Modifier" et ajoute-y . et %userprofile% si les valeurs n'y sont pas.
+          Si la variable n'existe pas, cliquez sur "Nouvelle". Dans le "nom de la variable", mettez "CLASSPATH" (sans les guillemets) et dans "valeur de la variable", mettez ".;%userprofile%" toujours sans guillemet.
+          Confirmez le changement par "OK" jusqu'à fermeture de toutes les fenêtres.
+
+    4.2 - Sous Linux
+          Ouvrez un terminal et faites
+          cd
+          pour revenir dans votre répertoire personnel (vous deviez y être normalement).
+          Ajoutez ensuite la ligne suivante à la fin de votre fichier .bashrc
+          export CLASSPATH=$CLASSPATH:.:~
+          Vous pouvez ouvrir ce fichier avec emacs en tapant dans le terminal
+          emacs .bashrc
+          N'oubliez pas d'enregistrer.
+
+    4.3 - Sous MacOS
+          Ouvrez un terminal et faites
+          cd
+          pour revenir dans vote répertoire personnel (vous deviez y être normalement).
+          Faites ensuite
+          touch .bashprofile
+          puis ouvrez ce fichier à l'aide d'un éditeur de texte comme nano :
+          nano .bashprofile
+          Ajoutez ensuite la ligne suivante à la fin de votre fichier .bash_profile
+          export CLASSPATH=$CLASSPATH:.:~
+          N'oubliez pas d'enregistrer.
+          
+
+5 - Testez le bon fonctionnement
+    Ouvrez un *** NOUVEAU *** terminal (powershell sous Windows). Déplacez vous dans le répertoire que vous aviez décompressé (MG2D_2.85 ou MG3D_0.2). Allez dans le répertoire de démos puis dans Pong (pour MG2D, test_MG3D pour MG3D).
+    Compilez par :
+    javac Main.java
+    Exécutez par :
+    java Main
+    Le programme de test doit s'exécuter. Si ce n'est pas le cas, vous avez peut être une configuration particulière. Dans ce cas vous savez quoi faire sinon reprenez à l'étape 0.

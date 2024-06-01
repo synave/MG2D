@@ -1,0 +1,30 @@
+<project name="MG2D" default="jar">
+
+    <target name="clean">
+        <delete dir="build"/>
+        <delete dir="doc_MG2D"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="build/classes"/>
+        <javac srcdir="MG2D" destdir="build/classes"/>
+    </target>
+
+    <target name="jar" depends="compile,javadoc">
+        <mkdir dir="build/jar"/>
+        <jar destfile="build/jar/MG2D.jar" basedir="build/classes">
+        </jar>
+    </target>
+    
+    <target name="javadoc">
+		<javadoc access="package" encoding="UTF-8" charset="UTF-8" docencoding="UTF-8" sourcepath="src" destdir="doc_MG2D" >
+			<fileset dir="MG2D" defaultexcludes="yes">
+				<include name="*.java" />
+				<include name="geometrie/*.java" />
+				<include name="audio/*.java" />
+			</fileset>
+		</javadoc>
+		<echo message = "javadoc has been generated!" />
+	</target> 
+
+</project>
