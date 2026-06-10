@@ -61,15 +61,19 @@ public class Fenetre extends JFrame {
     private Clavier c;
     private Souris s;
 
-    //Pour le calcul des fps
+    // Pour le calcul des fps
+    // temps du dernier événement.
     private long dernierEvt;
+    // temps du dernier afficahge.
     private long dernierAffichage;
+    // affiche le nombre de FPS dans la barre de titre ou non.
     private boolean affichageFPS;
 
     //Pour l'affichage du nombre de primitives
     private boolean affichageNbPrimitives;
 
-    String titre;
+    // Titre de la fenêtre
+    private String titre;
 
     // Constructeur //
 
@@ -347,6 +351,7 @@ public class Fenetre extends JFrame {
      * Pour que la forme apparaisse dans la zone d'affichage, ne pas oublier d'appeler la méthode rafraichir().
      * Il s'agit simplement d'un relais entre le programme principal et la classe Panneau.<br />
      * On évite ainsi à l'utilisateur d'écrire f.getP().ajouter();
+     * @param d un dessin à ajouter : un point, une ligne, un rectangle, etc.
      * @see Panneau
      * @see Dessin
      * @see #rafraichir rafraichir()
@@ -362,6 +367,7 @@ public class Fenetre extends JFrame {
      * Pour que la suppression de la forme ait lieu, ne pas oublier d'appeler la méthode rafraichir().
      * Il s'agit simplement d'un relais entre le programme principal et la classe Panneau.<br />
      * On évite ainsi à l'utilisateur d'écrire f.getP().supprimer();
+     * @param d le dessin à supprimer. Attention, la suppression se fait seulement si la primitive appartient bien à la fenêtre.
      * @see Panneau
      * @see Dessin
      * @see #rafraichir rafraichir()

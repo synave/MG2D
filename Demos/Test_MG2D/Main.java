@@ -98,5 +98,7 @@ public class Main {
 	Texture img2 = new Texture ( "img/java.png", centre ); 
 	img2.setTaille(100,500);
 	//f.ajouter ( img2 );
+
+	f.rafraichir();
     }
 }

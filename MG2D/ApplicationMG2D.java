@@ -138,7 +138,8 @@ public abstract class ApplicationMG2D{
      * Ici devra se trouver les éléments qui devront avoir lieux une fois que la boucle de jeu se termine
      */
     public void finDeBoucle(){
-        // Implémentation par défaut 
+        // Implémentation par défaut
+	System.exit(0);
     }
 
     /**

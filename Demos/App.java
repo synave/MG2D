@@ -19,7 +19,7 @@ class App extends ApplicationMG2D{
 	if(clavier.getHautEnfoncee())
 	    r.translater(0,1);
 	if(clavier.getQTape())
-	    System.exit(0);
+	    this.termineJeu();
     }
 
     public static void main(String[] args){

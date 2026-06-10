@@ -303,7 +303,14 @@ public class Texture extends Rectangle {
 
         setB ( new Point ( getA().getX() + largeur, getA().getY() + hauteur ) );
     }
-
+    
+    /**
+     * Permet d'attribuer une nouvelle image à la texture.<br />
+     * @param img La nouvelle image à attribuer à la texture.
+     * @param largeur nouvelle largeur de l'image à afficher.
+     * @param hauteur nouvelle hauteur de l'image à afficher.
+     * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/awt/image/BufferedImage.html" target="_blank">BufferedImage</a>
+     */
     public void setImg ( BufferedImage img, double largeur, double hauteur) {
         this.img = img;
 

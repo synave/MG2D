@@ -42,9 +42,15 @@ public class Texte extends Dessin {
 
     // Attributs //
 
-    //constantes utiilisée pour centrer le texte
-    public static final int CENTRE=0;
-    public static final int GAUCHE=1;
+    //constantes utilisée pour centrer le texte
+    /**
+     * Permet d'indiquer à MG2D l'alignement du texte : alignement à gauche.
+     */
+    public static final int CENTRE = 0;
+    /**
+     * Permet d'indiquer à MG2D l'alignement du texte : alignement centré.
+     */
+    public static final int GAUCHE = 1;
 
     private String texte;
     private Font police;
