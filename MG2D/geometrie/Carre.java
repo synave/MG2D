@@ -48,7 +48,7 @@ public class Carre extends Rectangle {
      * Construit un carré noir de (0,0) à (1,1).
      */
     public Carre(){
-	super(new Point(),1,1);
+	    super(new Point(),1,1);
     }
 
     /**
@@ -57,8 +57,7 @@ public class Carre extends Rectangle {
      * @param c Le carré à copier.
      */
     public Carre ( Carre c ) {
-
-	super ( c );
+	    super ( c );
     }
 
     // Sans couleur //
@@ -70,9 +69,8 @@ public class Carre extends Rectangle {
      * @param taille Dimension des côtés.
      * @see Point
      */
-    public Carre ( Point a, int taille ) {
-
-	super ( a, taille, taille );
+    public Carre ( Point a, double taille ) {
+	    super ( a, taille, taille );
     }
 
     /**
@@ -83,9 +81,8 @@ public class Carre extends Rectangle {
      * @param plein Défini si la forme doit être dessinée pleine ou non.
      * @see Point
      */
-    public Carre ( Point a, int taille, boolean plein ) {
-
-	super ( a, taille, taille, plein );
+    public Carre ( Point a, double taille, boolean plein ) {
+	    super ( a, taille, taille, plein );
     }
 
     /**
@@ -97,9 +94,8 @@ public class Carre extends Rectangle {
      * @param arcHauteur Arrondis en hauteur.
      * @see Point
      */
-    public Carre ( Point a, int taille, int arcLargeur, int arcHauteur ) {
-
-	super ( a, taille, taille, arcLargeur, arcHauteur );
+    public Carre ( Point a, int taille, double arcLargeur, double arcHauteur ) {
+	    super ( a, taille, taille, arcLargeur, arcHauteur );
     }
 
     /**
@@ -112,9 +108,8 @@ public class Carre extends Rectangle {
      * @param plein Défini si la forme doit être dessinée pleine ou non.
      * @see Point
      */
-    public Carre ( Point a, int taille, int arcLargeur, int arcHauteur, boolean plein ) {
-
-	super ( a, taille, taille, arcLargeur, arcHauteur, plein );
+    public Carre ( Point a, double taille, double arcLargeur, double arcHauteur, boolean plein ) {
+	    super ( a, taille, taille, arcLargeur, arcHauteur, plein );
     }
 
     // Avec couleur //
@@ -127,9 +122,8 @@ public class Carre extends Rectangle {
      * @see Couleur
      * @see Point
      */
-    public Carre ( Couleur couleur, Point a, int taille ) {
-
-	super ( couleur, a, taille, taille );
+    public Carre ( Couleur couleur, Point a, double taille ) {
+	    super ( couleur, a, taille, taille );
     }
 
     /**
@@ -141,9 +135,8 @@ public class Carre extends Rectangle {
      * @see Couleur
      * @see Point
      */
-    public Carre ( Couleur couleur, Point a, int taille, boolean plein ) {
-
-	super ( couleur, a, taille, taille, plein );
+    public Carre ( Couleur couleur, Point a, double taille, boolean plein ) {
+	    super ( couleur, a, taille, taille, plein );
     }
 
     /**
@@ -156,9 +149,8 @@ public class Carre extends Rectangle {
      * @see Couleur
      * @see Point
      */
-    public Carre ( Couleur couleur, Point a, int taille, int arcLargeur, int arcHauteur ) {
-
-	super ( couleur, a, taille, taille, arcLargeur, arcHauteur );
+    public Carre ( Couleur couleur, Point a, double taille, double arcLargeur, double arcHauteur ) {
+	    super ( couleur, a, taille, taille, arcLargeur, arcHauteur );
     }
 
     /**
@@ -172,9 +164,8 @@ public class Carre extends Rectangle {
      * @see Couleur
      * @see Point
      */
-    public Carre ( Couleur couleur, Point a, int taille, int arcLargeur, int arcHauteur, boolean plein ) {
-
-	super ( couleur, a, taille, taille, arcLargeur, arcHauteur, plein );
+    public Carre ( Couleur couleur, Point a, double taille, double arcLargeur, double arcHauteur, boolean plein ) {
+	    super ( couleur, a, taille, taille, arcLargeur, arcHauteur, plein );
     }
 
     // Accesseurs //
@@ -186,9 +177,8 @@ public class Carre extends Rectangle {
      * Cette taille n'étant pas stockée directement par un attribut, elle est obtenue par un calcul simple : bx - ax.
      * @return La taille des côtés.
      */
-    public int getTaille () {
-
-	return ( this.getB().getX() - this.getA().getX() );
+    public double getTaille () {
+	    return ( this.getB().getX() - this.getA().getX() );
     }
 
     /**
@@ -198,9 +188,9 @@ public class Carre extends Rectangle {
      * @see Point
      */
     public void setA(Point p){
-	int taille=getTaille();
-	super.setB( new Point ( p.getX()+taille, p.getY() + taille ) );
-	super.setA(p);
+        double taille=getTaille();
+        super.setB( new Point ( p.getX()+taille, p.getY() + taille ) );
+        super.setA(p);
     }
 
     /**
@@ -210,9 +200,9 @@ public class Carre extends Rectangle {
      * @see Point
      */
     public void setB(Point p){
-	int taille=getTaille();
-	super.setA( new Point ( p.getX()-taille, p.getY() - taille ) );
-	super.setB(p);
+        double taille=getTaille();
+        super.setA( new Point ( p.getX()-taille, p.getY() - taille ) );
+        super.setB(p);
     }
 
     /**
@@ -220,8 +210,8 @@ public class Carre extends Rectangle {
      * Le coin haut droit sera repositionné.
      * @param hauteur Nouvelle hauteur du carré.
      */
-    public void setHauteur(int hauteur){
-	super.setB( new Point ( getA().getX() + hauteur, getA().getY() + hauteur ) );
+    public void setHauteur(double hauteur){
+	    super.setB( new Point ( getA().getX() + hauteur, getA().getY() + hauteur ) );
     }
 
     /**
@@ -229,8 +219,8 @@ public class Carre extends Rectangle {
      * Le coin haut droit sera repositionné.
      * @param largeur Nouvelle largeur de l'image.
      */
-    public void setLargeur(int largeur){
-	super.setB ( new Point ( getA().getX() + largeur, getA().getY() + largeur) );
+    public void setLargeur(double largeur){
+	    super.setB ( new Point ( getA().getX() + largeur, getA().getY() + largeur) );
     }
 
     /**
@@ -238,8 +228,8 @@ public class Carre extends Rectangle {
      * Le coin haut droit sera repositionné.
      * @param taille Nouvelle taille du carré.
      */
-    public void setTaille(int taille){
-	super.setB ( new Point ( getA().getX() + taille, getA().getY() + taille) );
+    public void setTaille(double taille){
+	    super.setB ( new Point ( getA().getX() + taille, getA().getY() + taille) );
     }
 
     /**
@@ -250,12 +240,13 @@ public class Carre extends Rectangle {
      * @exception java.lang.RuntimeException Cette exception est lancée si :<ul><li>les arrondis ont des dimensions négatives</li><li>si on tente de construire un carré avec des dimensions négatives</li><li>si le coin bas gauche et au dessus ou à droite du coin haut droit.</li></ul>.
      * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html" target="_blank">RuntimeException</a>
      */
-    public void setTaille(int largeur, int hauteur){
-	if(largeur!=hauteur){
-	    throw new RuntimeException("Vous essayez de créer un Carré de largeur "+largeur+" et de hauteur "+hauteur+". Un carré doit avoir la même largeur que la hauteur.");
-	}
-	else
-	    super.setB ( new Point ( getA().getX() + largeur, getA().getY() + hauteur ) );
+    public void setTaille(double largeur, double hauteur){
+        if(largeur!=hauteur){
+            throw new RuntimeException("Vous essayez de créer un Carré de largeur "+largeur+" et de hauteur "+hauteur+". Un carré doit avoir la même largeur que la hauteur.");
+        }
+        else {
+            super.setB ( new Point ( getA().getX() + largeur, getA().getY() + hauteur ) );
+        }
     }
 
     // Méthodes //
@@ -272,15 +263,15 @@ public class Carre extends Rectangle {
 	g.setColor ( getCouleur() );
 
 	if ( getArrondi() && getPlein() )
-	    g.fillRoundRect ( this.getA().getX(), (int)g.getClipBounds().getHeight()-this.getA().getY()-getTaille(), getTaille(), getTaille(), getArcLargeur(), getArcHauteur() );
+	    g.fillRoundRect ( (int)this.getA().getX(), (int)g.getClipBounds().getHeight()-((int)this.getA().getY())-((int)getTaille()), (int)getTaille(), (int)getTaille(), (int)getArcLargeur(), (int)getArcHauteur() );
 
 	else if ( getArrondi() )
-	    g.drawRoundRect ( this.getA().getX(), (int)g.getClipBounds().getHeight()-this.getA().getY()-getTaille(), getTaille(), getTaille(), getArcLargeur(), getArcHauteur() );
+	    g.drawRoundRect ( (int)this.getA().getX(), (int)g.getClipBounds().getHeight()-((int)this.getA().getY())-((int)getTaille()), (int)getTaille(), (int)getTaille(), (int)getArcLargeur(), (int)getArcHauteur() );
 
 	else if ( getPlein() )
-	    g.fillRect ( this.getA().getX(), (int)g.getClipBounds().getHeight()-this.getA().getY()-getTaille(), getTaille(), getTaille() );
+	    g.fillRect ( (int)this.getA().getX(), (int)g.getClipBounds().getHeight()-((int)this.getA().getY())-((int)getTaille()), (int)getTaille(), (int)getTaille() );
 
 	else
-	    g.drawRect ( this.getA().getX(), (int)g.getClipBounds().getHeight()-this.getA().getY()-getTaille(), getTaille(), getTaille() );
+	    g.drawRect ( (int)this.getA().getX(), (int)g.getClipBounds().getHeight()-((int)this.getA().getY())-((int)getTaille()), (int)getTaille(), (int)getTaille() );
     }
 }

@@ -47,7 +47,7 @@ public class Cercle extends Ovale {
      * Construit un cercle noir centré en (1,1) et de rayon 1.
      */
     public Cercle(){
-	super(new Point(1,1),2,2);
+	    super(new Point(1,1),2,2);
     }
 
     /**
@@ -56,12 +56,12 @@ public class Cercle extends Ovale {
      * @param c Cercle.
      */
     public Cercle ( Cercle c ) {
-
-	super ( c.getCouleur(),
-		c.getO(),
-		c.getDiametre(),
-		c.getDiametre(),
-		c.getPlein()
+	    super ( 
+            c.getCouleur(),
+            c.getO(),
+            c.getDiametre(),
+            c.getDiametre(),
+            c.getPlein()
 		);
     }
 
@@ -74,9 +74,8 @@ public class Cercle extends Ovale {
      * @param rayon int correspondant au rayon du Cercle.
      * @see Point
      */
-    public Cercle ( Point o, int rayon ) {
-
-	super ( o, rayon*2, rayon*2 );
+    public Cercle ( Point o, double rayon ) {
+	    super ( o, rayon*2, rayon*2 );
     }
 
     /**
@@ -87,10 +86,8 @@ public class Cercle extends Ovale {
      * @param plein Défini si la forme doit être dessinée pleine ou non.
      * @see Point
      */
-    public Cercle ( Point o, int rayon, boolean plein ) {
-
-	super ( o, rayon*2, rayon*2, plein );
-
+    public Cercle ( Point o, double rayon, boolean plein ) {
+	    super ( o, rayon*2, rayon*2, plein );
     }
 
     /**
@@ -103,9 +100,13 @@ public class Cercle extends Ovale {
      */
     public Cercle ( Carre c ) {
 
-	super ( new Point ( ( c.getA().getX() + c.getTaille() / 2 ), ( c.getA().getY() + c.getTaille() / 2 ) ),
-		c.getTaille(),
-		c.getTaille()
+	    super ( 
+            new Point ( 
+                ( c.getA().getX() + c.getTaille() / 2 ), 
+                ( c.getA().getY() + c.getTaille() / 2 ) 
+            ),
+            c.getTaille(),
+            c.getTaille()
 		);
     }
 
@@ -120,10 +121,14 @@ public class Cercle extends Ovale {
      */
     public Cercle ( Carre c, boolean plein ) {
 
-	super ( new Point ( ( c.getA().getX() + c.getTaille() / 2 ), ( c.getA().getY() + c.getTaille() / 2 ) ),
-		c.getTaille(),
-		c.getTaille(),
-		plein
+	    super ( 
+            new Point ( 
+                ( c.getA().getX() + c.getTaille() / 2 ), 
+                ( c.getA().getY() + c.getTaille() / 2 ) 
+            ),
+            c.getTaille(),
+            c.getTaille(),
+            plein
 		);
     }
 
@@ -137,9 +142,8 @@ public class Cercle extends Ovale {
      * @see Couleur
      * @see Point
      */
-    public Cercle ( Couleur couleur, Point o, int rayon ) {
-
-	super ( couleur, o, rayon*2, rayon*2 );
+    public Cercle ( Couleur couleur, Point o, double rayon ) {
+        super ( couleur, o, rayon*2, rayon*2 );
     }
 
     /**
@@ -151,9 +155,8 @@ public class Cercle extends Ovale {
      * @see Couleur
      * @see Point
      */
-    public Cercle ( Couleur couleur, Point o, int rayon, boolean plein ) {
-
-	super ( couleur, o, rayon*2, rayon*2, plein );
+    public Cercle ( Couleur couleur, Point o, double rayon, boolean plein ) {
+	    super ( couleur, o, rayon*2, rayon*2, plein );
     }
 
     /**
@@ -166,10 +169,13 @@ public class Cercle extends Ovale {
      */
     public Cercle ( Couleur couleur, Carre c ) {
 
-	super ( couleur,
-		new Point ( ( c.getA().getX() + c.getTaille()/2 ), ( c.getA().getY() + c.getTaille()/2 ) ),
-		c.getTaille(),
-		c.getTaille()
+	    super ( couleur,
+		    new Point ( 
+                ( c.getA().getX() + c.getTaille()/2 ), 
+                ( c.getA().getY() + c.getTaille()/2 ) 
+            ),
+            c.getTaille(),
+            c.getTaille()
 		);
     }
 
@@ -184,11 +190,14 @@ public class Cercle extends Ovale {
      */
     public Cercle ( Couleur couleur, Carre c, boolean plein ) {
 
-	super ( couleur,
-		new Point ( ( c.getA().getX() + c.getTaille()/2 ), ( c.getA().getY() + c.getTaille()/2 ) ),
-		c.getTaille(),
-		c.getTaille(),
-		plein
+	    super ( couleur,
+		    new Point ( 
+                ( c.getA().getX() + c.getTaille()/2 ), 
+                ( c.getA().getY() + c.getTaille()/2 ) 
+            ),
+            c.getTaille(),
+            c.getTaille(),
+            plein
 		);
     }
 
@@ -200,18 +209,16 @@ public class Cercle extends Ovale {
      * Retourne la valeur du rayon.
      * @return Rayon du cercle.
      */
-    public int getRayon () {
-
-	return getLargeur()/2;
+    public double getRayon () {
+	    return getLargeur()/2;
     }
 
     /**
      * Retourne la valeur du diamètre.
      * @return Diamètre du cercle.
      */
-    public int getDiametre () {
-
-	return getLargeur();
+    public double getDiametre () {
+        return getLargeur();
     }
 
     // Setter //
@@ -221,9 +228,8 @@ public class Cercle extends Ovale {
      * Le centre du cercle ne bouge pas.
      * @param rayon Nouveau rayon du cercle.
      */
-    public void setRayon ( int rayon ) {
-
-	setLargeur(rayon*2);
+    public void setRayon ( double rayon ) {
+        setLargeur(rayon*2);
     }
 
     /**
@@ -231,29 +237,26 @@ public class Cercle extends Ovale {
      * Le centre du cercle ne bouge pas.
      * @param diametre Nouveau diamètre du cercle.
      */
-    public void setDiametre ( int diametre ) {
-
-	setLargeur(diametre);
+    public void setDiametre ( double diametre ) {
+       setLargeur(diametre);
     }
 
     /**
      * <strong>Redéfinition !</strong> Permet d'attribuer une nouvelle valeur au diamètre.
      * @param diametre Nouveau diamètre du cercle.
      */
-    public void setLargeur ( int diametre ) {
-
-	super.setLargeur(diametre);
-	super.setHauteur(diametre);
+    public void setLargeur ( double diametre ) {
+        super.setLargeur(diametre);
+        super.setHauteur(diametre);
     }
 
     /**
      * <strong>Redéfinition !</strong> Permet d'attribuer une nouvelle valeur au diamètre.
      * @param diametre Nouveau diamètre du Cercle.
      */
-    public void setHauteur ( int diametre ) {
-
-	super.setLargeur(diametre);
-	super.setHauteur(diametre);
+    public void setHauteur ( double diametre ) {
+        super.setLargeur(diametre);
+        super.setHauteur(diametre);
     }
 
     // Méthodes //
@@ -271,15 +274,15 @@ public class Cercle extends Ovale {
      */
     public boolean intersection ( Point p ) {
 
-	boolean collision = false;
+        boolean collision = false;
 
-	int dx = p.getX() - this.getO().getX();
-	int dy = p.getY() - this.getO().getY();
+        double dx = p.getX() - this.getO().getX();
+        double dy = p.getY() - this.getO().getY();
 
-	if ( ( dx * dx ) + ( dy * dy ) < ( getRayon() * getRayon() ) )
-	    collision = true;
+        if ( ( dx * dx ) + ( dy * dy ) < ( getRayon() * getRayon() ) )
+            collision = true;
 
-	return collision;
+        return collision;
     }
 
     // Cercle - Ligne //
@@ -292,25 +295,25 @@ public class Cercle extends Ovale {
      */
     public boolean intersection ( Ligne l ) {
 
-	boolean collision = false;
+        boolean collision = false;
 
-	int ux = l.getB().getX() - l.getA().getX();
-	int uy = l.getB().getY() - l.getA().getY();
-	int acx = this.getO().getX() - l.getA().getX();
-	int acy = this.getO().getY() - l.getA().getY();
+        double ux = l.getB().getX() - l.getA().getX();
+        double uy = l.getB().getY() - l.getA().getY();
+        double acx = this.getO().getX() - l.getA().getX();
+        double acy = this.getO().getY() - l.getA().getY();
 
-	int numerateur = ux * acy - uy * acx;
+        double numerateur = ux * acy - uy * acx;
 
-	if ( numerateur < 0 )
-	    numerateur = -numerateur;
+        if ( numerateur < 0 )
+            numerateur = -numerateur;
 
-	int denominateur = ( int ) ( Math.sqrt ( ux * ux + uy * uy ) );
-	int ci = numerateur / denominateur;
+        double denominateur = Math.sqrt ( ux * ux + uy * uy );
+        double ci = numerateur / denominateur;
 
-	if ( ci < getRayon() )
-	    collision = true;
+        if ( ci < getRayon() )
+            collision = true;
 
-	return collision;
+        return collision;
     }
 
     // Cercle - Rectangle //
@@ -323,27 +326,27 @@ public class Cercle extends Ovale {
      */
     public boolean intersection ( Rectangle r ) {
 
-	boolean collision = false;
+        boolean collision = false;
 
-	int x = this.getO().getX();
-	int y = this.getO().getY();
+        double x = this.getO().getX();
+        double y = this.getO().getY();
 
-	if ( x < r.getA().getX() )
-	    x = r.getA().getX();
+        if ( x < r.getA().getX() )
+            x = r.getA().getX();
 
-	if ( x > ( r.getA().getX() + r.getLargeur() ) )
-	    x = ( r.getA().getX() + r.getLargeur() );
+        if ( x > ( r.getA().getX() + r.getLargeur() ) )
+            x = ( r.getA().getX() + r.getLargeur() );
 
-	if ( y <  r.getA().getY() )
-	    y = r.getA().getY();
+        if ( y <  r.getA().getY() )
+            y = r.getA().getY();
 
-	if ( y > ( r.getA().getY() + r.getHauteur() ) )
-	    y = ( r.getA().getY() + r.getHauteur() );
+        if ( y > ( r.getA().getY() + r.getHauteur() ) )
+            y = ( r.getA().getY() + r.getHauteur() );
 
-	if ( ( this.getO().getX() - x ) * ( this.getO().getX() - x ) + ( this.getO().getY() - y ) * ( this.getO().getY() - y ) < getRayon() * getRayon() )
-	    collision = true;
+        if ( ( this.getO().getX() - x ) * ( this.getO().getX() - x ) + ( this.getO().getY() - y ) * ( this.getO().getY() - y ) < getRayon() * getRayon() )
+            collision = true;
 
-	return collision;
+        return collision;
     }
 
     // Cercle - Ovale //
@@ -360,16 +363,16 @@ public class Cercle extends Ovale {
      */
     public boolean intersection ( Cercle c ) {
 
-	boolean collision = false;
+        boolean collision = false;
 
-	int dx = c.getO().getX() - this.getO().getX();
-	int dy = c.getO().getY() - this.getO().getY();
-	int ra = c.getRayon() + getRayon();
+        double dx = c.getO().getX() - this.getO().getX();
+        double dy = c.getO().getY() - this.getO().getY();
+        double ra = c.getRayon() + getRayon();
 
-	if ( ( dx * dx ) + ( dy * dy ) <= ( ra * ra ) )
-	    collision = true;
+        if ( ( dx * dx ) + ( dy * dy ) <= ( ra * ra ) )
+            collision = true;
 
-	return collision;
+        return collision;
     }
 
     // Cercle - Triangle //
@@ -382,7 +385,7 @@ public class Cercle extends Ovale {
      * @return Une chaîne de caractères décrivant le cercle.
      */
     public String toString(){
-	return new String("Cercle de centre "+getO()+" et de rayon "+getRayon());
+	    return new String("Cercle de centre "+getO()+" et de rayon "+getRayon());
     }
 
     /**
@@ -390,16 +393,16 @@ public class Cercle extends Ovale {
      * @return Vrai si l'objet passé en paramètre est un cercle dont les caractéristiques sont les mêmes que le cercle sur lequel la méthode est appelée.
      */
     public boolean equals(Object obj){
-	if (obj==this) {
-            return true;
-        }
+        if (obj==this) {
+                return true;
+            }
 
-        // Vérification du type du paramètre
-        if (obj instanceof Cercle) {
-            // Vérification des valeurs des attributs
-             Cercle other = (Cercle) obj;
-	     return super.equals(other) && getRayon()==other.getRayon();
-	}
-	return false;
+            // Vérification du type du paramètre
+            if (obj instanceof Cercle) {
+                // Vérification des valeurs des attributs
+                Cercle other = (Cercle) obj;
+            return super.equals(other) && getRayon()==other.getRayon();
+        }
+        return false;
     }
 }

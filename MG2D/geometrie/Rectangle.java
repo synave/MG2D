@@ -43,7 +43,7 @@ public class Rectangle extends Dessin {
     private Point a;	// Point ( x min, y min ) //
     private Point b;	// Point ( x max, y max ) //
 
-    private int arcLargeur = 0, arcHauteur = 0;
+    private double arcLargeur = 0, arcHauteur = 0;
 
     private boolean plein = false;		// Détermine si le rectangle est plein ou non //
 
@@ -53,9 +53,9 @@ public class Rectangle extends Dessin {
      * Construit un rectangle noir allant de (0,0) en (2,1).
      */
     public Rectangle(){
-	super();
-	a = new Point();
-	b = new Point(2,1);
+        super();
+        a = new Point();
+        b = new Point(2,1);
     }
 
     /**
@@ -64,15 +64,15 @@ public class Rectangle extends Dessin {
      */
     public Rectangle ( Rectangle r ) {
 
-	super ( r.getCouleur() );
+        super ( r.getCouleur() );
 
-	a = new Point ( r.getA().getX(), r.getA().getY() );
-	b = new Point ( r.getB().getX(), r.getB().getY() );
+        a = new Point ( r.getA().getX(), r.getA().getY() );
+        b = new Point ( r.getB().getX(), r.getB().getY() );
 
-	arcLargeur = r.getArcLargeur();
-	arcHauteur = r.getArcHauteur();
+        arcLargeur = r.getArcLargeur();
+        arcHauteur = r.getArcHauteur();
 
-	plein = r.getPlein();
+        plein = r.getPlein();
     }
 
     // Sans couleur //
@@ -87,12 +87,12 @@ public class Rectangle extends Dessin {
      */
     public Rectangle ( Point a, Point b ) {
 
-	super ( Couleur.NOIR );
+        super ( Couleur.NOIR );
 
-	this.a = new Point ( a );
-	this.b = new Point ( b );
-	if(a.getX()>b.getX() || a.getY()>b.getY())
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle dont le coin bas gauche se trouve au dessus ou à droite du coin haut droite. Coin bas gauche : "+a+". Coin haut droit : "+b);
+        this.a = new Point ( a );
+        this.b = new Point ( b );
+        if(a.getX()>b.getX() || a.getY()>b.getY())
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle dont le coin bas gauche se trouve au dessus ou à droite du coin haut droite. Coin bas gauche : "+a+". Coin haut droit : "+b);
     }
 
     /**
@@ -106,14 +106,14 @@ public class Rectangle extends Dessin {
      */
     public Rectangle ( Point a, Point b, boolean plein ) {
 
-	super ( Couleur.NOIR );
+        super ( Couleur.NOIR );
 
-	this.a = new Point ( a );
-	this.b = new Point ( b );
-	if(a.getX()>b.getX() || a.getY()>b.getY())
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle dont le coin bas gauche se trouve au dessus ou à droite du coin haut droite. Coin bas gauche : "+a+". Coin haut droit : "+b);
+        this.a = new Point ( a );
+        this.b = new Point ( b );
+        if(a.getX()>b.getX() || a.getY()>b.getY())
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle dont le coin bas gauche se trouve au dessus ou à droite du coin haut droite. Coin bas gauche : "+a+". Coin haut droit : "+b);
 
-	this.plein = plein;
+        this.plein = plein;
     }
 
     /**
@@ -126,21 +126,21 @@ public class Rectangle extends Dessin {
      * @exception java.lang.RuntimeException Cette exception est lancée si :<ul><li>les arrondis ont des dimensions négatives</li><li>si on tente de construire un rectangle avec des dimensions négatives</li><li>si le coin bas gauche et au dessus ou à droite du coin haut droit.</li></ul>.
      * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html" target="_blank">RuntimeException</a>
      */
-    public Rectangle ( Point a, Point b, int arcLargeur, int arcHauteur ) {
+    public Rectangle ( Point a, Point b, double arcLargeur, double arcHauteur ) {
 
 	super ( Couleur.NOIR );
 
-	this.a = new Point ( a );
-	this.b = new Point ( b );
-	if(a.getX()>b.getX() || a.getY()>b.getY())
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle dont le coin bas gauche se trouve au dessus ou à droite du coin haut droite. Coin bas gauche : "+a+". Coin haut droit : "+b);
+        this.a = new Point ( a );
+        this.b = new Point ( b );
+        if(a.getX()>b.getX() || a.getY()>b.getY())
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle dont le coin bas gauche se trouve au dessus ou à droite du coin haut droite. Coin bas gauche : "+a+". Coin haut droit : "+b);
 
-	this.arcLargeur = arcLargeur;
-	this.arcHauteur = arcHauteur;
-	if(arcLargeur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un arrondi en largeur de "+arcLargeur);
-	if(arcHauteur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un arrondi en hauteur de "+arcHauteur);
+        this.arcLargeur = arcLargeur;
+        this.arcHauteur = arcHauteur;
+        if(arcLargeur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un arrondi en largeur de "+arcLargeur);
+        if(arcHauteur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un arrondi en hauteur de "+arcHauteur);
     }
 
     /**
@@ -154,23 +154,23 @@ public class Rectangle extends Dessin {
      * @exception java.lang.RuntimeException Cette exception est lancée si :<ul><li>les arrondis ont des dimensions négatives</li><li>si on tente de construire un rectangle avec des dimensions négatives</li><li>si le coin bas gauche et au dessus ou à droite du coin haut droit.</li></ul>.
      * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html" target="_blank">RuntimeException</a>
      */
-    public Rectangle ( Point a, Point b, int arcLargeur, int arcHauteur, boolean plein ) {
+    public Rectangle ( Point a, Point b, double arcLargeur, double arcHauteur, boolean plein ) {
 
-	super ( Couleur.NOIR );
+        super ( Couleur.NOIR );
 
-	this.a = new Point ( a );
-	this.b = new Point ( b );
-	if(a.getX()>b.getX() || a.getY()>b.getY())
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle dont le coin bas gauche se trouve au dessus ou à droite du coin haut droite. Coin bas gauche : "+a+". Coin haut droit : "+b);
+        this.a = new Point ( a );
+        this.b = new Point ( b );
+        if(a.getX()>b.getX() || a.getY()>b.getY())
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle dont le coin bas gauche se trouve au dessus ou à droite du coin haut droite. Coin bas gauche : "+a+". Coin haut droit : "+b);
 
-	this.arcLargeur = arcLargeur;
-	this.arcHauteur = arcHauteur;
-	if(arcLargeur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un arrondi en largeur de "+arcLargeur);
-	if(arcHauteur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un arrondi en hauteur de "+arcHauteur);
+        this.arcLargeur = arcLargeur;
+        this.arcHauteur = arcHauteur;
+        if(arcLargeur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un arrondi en largeur de "+arcLargeur);
+        if(arcHauteur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un arrondi en hauteur de "+arcHauteur);
 
-	this.plein = plein;
+        this.plein = plein;
     }
 
     /**
@@ -182,16 +182,16 @@ public class Rectangle extends Dessin {
      * @exception java.lang.RuntimeException Cette exception est lancée si :<ul><li>les arrondis ont des dimensions négatives</li><li>si on tente de construire un rectangle avec des dimensions négatives</li><li>si le coin bas gauche et au dessus ou à droite du coin haut droit.</li></ul>.
      * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html" target="_blank">RuntimeException</a>
      */
-    public Rectangle ( Point a, int largeur, int hauteur ) {
+    public Rectangle ( Point a, double largeur, double hauteur ) {
 
-	super ( Couleur.NOIR );
+        super ( Couleur.NOIR );
 
-        this.a = new Point ( a );
-        b = new Point ( ( a.getX() + largeur ), ( a.getY() + hauteur ) );
-	if(largeur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle de largeur négative : "+largeur);
-	if(hauteur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle de hauteur négative : "+hauteur);
+            this.a = new Point ( a );
+            b = new Point ( ( a.getX() + largeur ), ( a.getY() + hauteur ) );
+        if(largeur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle de largeur négative : "+largeur);
+        if(hauteur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle de hauteur négative : "+hauteur);
     }
 
     /**
@@ -204,16 +204,16 @@ public class Rectangle extends Dessin {
      * @exception java.lang.RuntimeException Cette exception est lancée si :<ul><li>les arrondis ont des dimensions négatives</li><li>si on tente de construire un rectangle avec des dimensions négatives</li><li>si le coin bas gauche et au dessus ou à droite du coin haut droit.</li></ul>.
      * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html" target="_blank">RuntimeException</a>
      */
-    public Rectangle ( Point a, int largeur, int hauteur, boolean plein ) {
+    public Rectangle ( Point a, double largeur, double hauteur, boolean plein ) {
 
-	super ( Couleur.NOIR );
+        super ( Couleur.NOIR );
 
-        this.a = new Point ( a );
-        b = new Point ( ( a.getX() + largeur ), ( a.getY() + hauteur ) );
-	if(largeur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle de largeur négative : "+largeur);
-	if(hauteur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle de hauteur négative : "+hauteur);
+            this.a = new Point ( a );
+            b = new Point ( ( a.getX() + largeur ), ( a.getY() + hauteur ) );
+        if(largeur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle de largeur négative : "+largeur);
+        if(hauteur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle de hauteur négative : "+hauteur);
 
         this.plein = plein;
     }
@@ -229,23 +229,23 @@ public class Rectangle extends Dessin {
      * @exception java.lang.RuntimeException Cette exception est lancée si :<ul><li>les arrondis ont des dimensions négatives</li><li>si on tente de construire un rectangle avec des dimensions négatives</li><li>si le coin bas gauche et au dessus ou à droite du coin haut droit.</li></ul>.
      * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html" target="_blank">RuntimeException</a>
      */
-    public Rectangle ( Point a, int largeur, int hauteur, int arcLargeur, int arcHauteur ) {
+    public Rectangle ( Point a, double largeur, double hauteur, double arcLargeur, double arcHauteur ) {
 
-	super ( Couleur.NOIR );
+        super ( Couleur.NOIR );
 
-	this.a = new Point ( a );
-	b = new Point ( ( a.getX() + largeur ), ( a.getY() + hauteur ) );
-	if(largeur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle de largeur négative : "+largeur);
-	if(hauteur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle de hauteur négative : "+hauteur);
+        this.a = new Point ( a );
+        b = new Point ( ( a.getX() + largeur ), ( a.getY() + hauteur ) );
+        if(largeur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle de largeur négative : "+largeur);
+        if(hauteur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle de hauteur négative : "+hauteur);
 
-	this.arcLargeur = arcLargeur;
-	this.arcHauteur = arcHauteur;
-	if(arcLargeur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un arrondi en largeur de "+arcLargeur);
-	if(arcHauteur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un arrondi en hauteur de "+arcHauteur);
+        this.arcLargeur = arcLargeur;
+        this.arcHauteur = arcHauteur;
+        if(arcLargeur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un arrondi en largeur de "+arcLargeur);
+        if(arcHauteur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un arrondi en hauteur de "+arcHauteur);
     }
 
     /**
@@ -260,23 +260,23 @@ public class Rectangle extends Dessin {
      * @exception java.lang.RuntimeException Cette exception est lancée si :<ul><li>les arrondis ont des dimensions négatives</li><li>si on tente de construire un rectangle avec des dimensions négatives</li><li>si le coin bas gauche et au dessus ou à droite du coin haut droit.</li></ul>.
      * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html" target="_blank">RuntimeException</a>
      */
-    public Rectangle ( Point a, int largeur, int hauteur, int arcLargeur, int arcHauteur, boolean plein ) {
+    public Rectangle ( Point a, double largeur, double hauteur, double arcLargeur, double arcHauteur, boolean plein ) {
 
-	super ( Couleur.NOIR );
+        super ( Couleur.NOIR );
 
-	this.a = new Point ( a );
-	b = new Point ( ( a.getX() + largeur ), ( a.getY() + hauteur ) );
-	if(largeur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle de largeur négative : "+largeur);
-	if(hauteur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle de hauteur négative : "+hauteur);
+        this.a = new Point ( a );
+        b = new Point ( ( a.getX() + largeur ), ( a.getY() + hauteur ) );
+        if(largeur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle de largeur négative : "+largeur);
+        if(hauteur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle de hauteur négative : "+hauteur);
 
-	this.arcLargeur = arcLargeur;
-	this.arcHauteur = arcHauteur;
-	if(arcLargeur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un arrondi en largeur de "+arcLargeur);
-	if(arcHauteur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un arrondi en hauteur de "+arcHauteur);
+        this.arcLargeur = arcLargeur;
+        this.arcHauteur = arcHauteur;
+        if(arcLargeur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un arrondi en largeur de "+arcLargeur);
+        if(arcHauteur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un arrondi en hauteur de "+arcHauteur);
 
         this.plein = plein;
     }
@@ -293,12 +293,12 @@ public class Rectangle extends Dessin {
      */
     public Rectangle ( Couleur couleur, Point a, Point b )
     {
-	super ( couleur );
+        super ( couleur );
 
-	this.a = new Point ( a );
-	this.b = new Point ( b );
-	if(a.getX()>b.getX() || a.getY()>b.getY())
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle dont le coin bas gauche se trouve au dessus ou à droite du coin haut droite. Coin bas gauche : "+a+". Coin haut droit : "+b);
+        this.a = new Point ( a );
+        this.b = new Point ( b );
+        if(a.getX()>b.getX() || a.getY()>b.getY())
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle dont le coin bas gauche se trouve au dessus ou à droite du coin haut droite. Coin bas gauche : "+a+". Coin haut droit : "+b);
     }
 
     /**
@@ -312,14 +312,14 @@ public class Rectangle extends Dessin {
      */
     public Rectangle ( Couleur couleur, Point a, Point b, boolean plein ) {
 
-	super ( couleur );
+        super ( couleur );
 
-	this.a = new Point ( a );
-	this.b = new Point ( b );
-	if(a.getX()>b.getX() || a.getY()>b.getY())
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle dont le coin bas gauche se trouve au dessus ou à droite du coin haut droite. Coin bas gauche : "+a+". Coin haut droit : "+b);
+        this.a = new Point ( a );
+        this.b = new Point ( b );
+        if(a.getX()>b.getX() || a.getY()>b.getY())
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle dont le coin bas gauche se trouve au dessus ou à droite du coin haut droite. Coin bas gauche : "+a+". Coin haut droit : "+b);
 
-	this.plein = plein;
+        this.plein = plein;
     }
 
     /**
@@ -332,21 +332,21 @@ public class Rectangle extends Dessin {
      * @exception java.lang.RuntimeException Cette exception est lancée si :<ul><li>les arrondis ont des dimensions négatives</li><li>si on tente de construire un rectangle avec des dimensions négatives</li><li>si le coin bas gauche et au dessus ou à droite du coin haut droit.</li></ul>.
      * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html" target="_blank">RuntimeException</a>
      */
-    public Rectangle ( Couleur couleur, Point a, Point b, int arcLargeur, int arcHauteur ) {
+    public Rectangle ( Couleur couleur, Point a, Point b, double arcLargeur, double arcHauteur ) {
 
-	super ( couleur );
+        super ( couleur );
 
-	this.a = new Point ( a );
-	this.b = new Point ( b );
-	if(a.getX()>b.getX() || a.getY()>b.getY())
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle dont le coin bas gauche se trouve au dessus ou à droite du coin haut droite. Coin bas gauche : "+a+". Coin haut droit : "+b);
+        this.a = new Point ( a );
+        this.b = new Point ( b );
+        if(a.getX()>b.getX() || a.getY()>b.getY())
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle dont le coin bas gauche se trouve au dessus ou à droite du coin haut droite. Coin bas gauche : "+a+". Coin haut droit : "+b);
 
-	this.arcLargeur = arcLargeur;
-	this.arcHauteur = arcHauteur;
-	if(arcLargeur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un arrondi en largeur de "+arcLargeur);
-	if(arcHauteur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un arrondi en hauteur de "+arcHauteur);
+        this.arcLargeur = arcLargeur;
+        this.arcHauteur = arcHauteur;
+        if(arcLargeur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un arrondi en largeur de "+arcLargeur);
+        if(arcHauteur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un arrondi en hauteur de "+arcHauteur);
     }
 
     /**
@@ -360,23 +360,23 @@ public class Rectangle extends Dessin {
      * @exception java.lang.RuntimeException Cette exception est lancée si :<ul><li>les arrondis ont des dimensions négatives</li><li>si on tente de construire un rectangle avec des dimensions négatives</li><li>si le coin bas gauche et au dessus ou à droite du coin haut droit.</li></ul>.
      * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html" target="_blank">RuntimeException</a>
      */
-    public Rectangle ( Couleur couleur, Point a, Point b, int arcLargeur, int arcHauteur, boolean plein ) {
+    public Rectangle ( Couleur couleur, Point a, Point b, double arcLargeur, double arcHauteur, boolean plein ) {
 
-	super ( couleur );
+        super ( couleur );
 
-	this.a = new Point ( a );
-	this.b = new Point ( b );
-	if(a.getX()>b.getX() || a.getY()>b.getY())
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle dont le coin bas gauche se trouve au dessus ou à droite du coin haut droite. Coin bas gauche : "+a+". Coin haut droit : "+b);
+        this.a = new Point ( a );
+        this.b = new Point ( b );
+        if(a.getX()>b.getX() || a.getY()>b.getY())
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle dont le coin bas gauche se trouve au dessus ou à droite du coin haut droite. Coin bas gauche : "+a+". Coin haut droit : "+b);
 
-	this.arcLargeur = arcLargeur;
-	this.arcHauteur = arcHauteur;
-	if(arcLargeur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un arrondi en largeur de "+arcLargeur);
-	if(arcHauteur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un arrondi en hauteur de "+arcHauteur);
+        this.arcLargeur = arcLargeur;
+        this.arcHauteur = arcHauteur;
+        if(arcLargeur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un arrondi en largeur de "+arcLargeur);
+        if(arcHauteur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un arrondi en hauteur de "+arcHauteur);
 
-	this.plein = plein;
+        this.plein = plein;
 
     }
 
@@ -389,16 +389,16 @@ public class Rectangle extends Dessin {
      * @exception java.lang.RuntimeException Cette exception est lancée si :<ul><li>les arrondis ont des dimensions négatives</li><li>si on tente de construire un rectangle avec des dimensions négatives</li><li>si le coin bas gauche et au dessus ou à droite du coin haut droit.</li></ul>.
      * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html" target="_blank">RuntimeException</a>
      */
-    public Rectangle ( Couleur couleur, Point a, int largeur, int hauteur ) {
+    public Rectangle ( Couleur couleur, Point a, double largeur, double hauteur ) {
 
-	super ( couleur );
+        super ( couleur );
 
-	this.a = new Point ( a );
-	b = new Point ( ( a.getX() + largeur ), ( a.getY() + hauteur ) );
-	if(largeur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle de largeur négative : "+largeur);
-	if(hauteur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle de hauteur négative : "+hauteur);
+        this.a = new Point ( a );
+        b = new Point ( ( a.getX() + largeur ), ( a.getY() + hauteur ) );
+        if(largeur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle de largeur négative : "+largeur);
+        if(hauteur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle de hauteur négative : "+hauteur);
     }
 
     /**
@@ -411,16 +411,16 @@ public class Rectangle extends Dessin {
      * @exception java.lang.RuntimeException Cette exception est lancée si :<ul><li>les arrondis ont des dimensions négatives</li><li>si on tente de construire un rectangle avec des dimensions négatives</li><li>si le coin bas gauche et au dessus ou à droite du coin haut droit.</li></ul>.
      * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html" target="_blank">RuntimeException</a>
      */
-    public Rectangle ( Couleur couleur, Point a, int largeur, int hauteur, boolean plein ) {
+    public Rectangle ( Couleur couleur, Point a, double largeur, double hauteur, boolean plein ) {
 
-	super ( couleur );
+        super ( couleur );
 
-	this.a = new Point ( a );
-	b = new Point ( ( a.getX() + largeur ), ( a.getY() + hauteur ) );
-	if(largeur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle de largeur négative : "+largeur);
-	if(hauteur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle de hauteur négative : "+hauteur);
+        this.a = new Point ( a );
+        b = new Point ( ( a.getX() + largeur ), ( a.getY() + hauteur ) );
+        if(largeur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle de largeur négative : "+largeur);
+        if(hauteur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle de hauteur négative : "+hauteur);
 
         this.plein = plein;
     }
@@ -436,23 +436,23 @@ public class Rectangle extends Dessin {
      * @exception java.lang.RuntimeException Cette exception est lancée si :<ul><li>les arrondis ont des dimensions négatives</li><li>si on tente de construire un rectangle avec des dimensions négatives</li><li>si le coin bas gauche et au dessus ou à droite du coin haut droit.</li></ul>.
      * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html" target="_blank">RuntimeException</a>
      */
-    public Rectangle ( Couleur couleur, Point a, int largeur, int hauteur, int arcLargeur, int arcHauteur ) {
+    public Rectangle ( Couleur couleur, Point a, double largeur, double hauteur, double arcLargeur, double arcHauteur ) {
 
-	super ( couleur );
+        super ( couleur );
 
-	this.a = new Point ( a );
-	b = new Point ( ( a.getX() + largeur ), ( a.getY() + hauteur ) );
-	if(largeur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle de largeur négative : "+largeur);
-	if(hauteur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle de hauteur négative : "+hauteur);
+        this.a = new Point ( a );
+        b = new Point ( ( a.getX() + largeur ), ( a.getY() + hauteur ) );
+        if(largeur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle de largeur négative : "+largeur);
+        if(hauteur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle de hauteur négative : "+hauteur);
 
-	this.arcLargeur = arcLargeur;
-	this.arcHauteur = arcHauteur;
-	if(arcLargeur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un arrondi en largeur de "+arcLargeur);
-	if(arcHauteur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un arrondi en hauteur de "+arcHauteur);
+        this.arcLargeur = arcLargeur;
+        this.arcHauteur = arcHauteur;
+        if(arcLargeur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un arrondi en largeur de "+arcLargeur);
+        if(arcHauteur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un arrondi en hauteur de "+arcHauteur);
     }
 
     /**
@@ -467,23 +467,23 @@ public class Rectangle extends Dessin {
      * @exception java.lang.RuntimeException Cette exception est lancée si :<ul><li>les arrondis ont des dimensions négatives</li><li>si on tente de construire un rectangle avec des dimensions négatives</li><li>si le coin bas gauche et au dessus ou à droite du coin haut droit.</li></ul>.
      * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html" target="_blank">RuntimeException</a>
      */
-    public Rectangle ( Couleur couleur, Point a, int largeur, int hauteur, int arcLargeur, int arcHauteur, boolean plein ) {
+    public Rectangle ( Couleur couleur, Point a, double largeur, double hauteur, double arcLargeur, double arcHauteur, boolean plein ) {
 
-	super ( couleur );
+        super ( couleur );
 
-	this.a = new Point ( a );
-	b = new Point ( ( a.getX() + largeur ), ( a.getY() + hauteur ) );
-	if(largeur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle de largeur négative : "+largeur);
-	if(hauteur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle de hauteur négative : "+hauteur);
+        this.a = new Point ( a );
+        b = new Point ( ( a.getX() + largeur ), ( a.getY() + hauteur ) );
+        if(largeur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle de largeur négative : "+largeur);
+        if(hauteur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle de hauteur négative : "+hauteur);
 
-	this.arcLargeur = arcLargeur;
-	this.arcHauteur = arcHauteur;
-	if(arcLargeur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un arrondi en largeur de "+arcLargeur);
-	if(arcHauteur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un arrondi en hauteur de "+arcHauteur);
+        this.arcLargeur = arcLargeur;
+        this.arcHauteur = arcHauteur;
+        if(arcLargeur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un arrondi en largeur de "+arcLargeur);
+        if(arcHauteur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un arrondi en hauteur de "+arcHauteur);
 
         this.plein = plein;
     }
@@ -497,8 +497,7 @@ public class Rectangle extends Dessin {
      * @return Coin bas gauche.
      */
     public Point getA () {
-
-	return new Point(a);
+	    return new Point(a);
     }
 
     /**
@@ -506,44 +505,39 @@ public class Rectangle extends Dessin {
      * @return Coin haut droit.
      */
     public Point getB () {
-
-	return new Point(b);
+	    return new Point(b);
     }
 
     /**
      * Retourne la largeur du rectangle.
      * @return Largeur du rectangle.
      */
-    public int getLargeur () {
-
-	return ( b.getX() - a.getX() );
+    public double getLargeur () {
+        return ( b.getX() - a.getX() );
     }
 
     /**
      * Retourne la hauteur du rectangle.
      * @return Hauteur du rectangle.
      */
-    public int getHauteur () {
-
-	return ( b.getY() - a.getY() );
+    public double getHauteur () {
+       return ( b.getY() - a.getY() );
     }
 
     /**
      * Retourne la valeur de l'arrondi en largeur.
      * @return Arrondis en largeur.
      */
-    public int getArcLargeur () {
-
-	return arcLargeur;
+    public double getArcLargeur () {
+       return arcLargeur;
     }
 
     /**
      * Retourne la valeur de l'arrondi en hauteur.
      * @return Arrondis en hauteur.
      */
-    public int getArcHauteur () {
-
-	return arcHauteur;
+    public double getArcHauteur () {
+       return arcHauteur;
     }
 
     /**
@@ -551,8 +545,7 @@ public class Rectangle extends Dessin {
      * @return Vrai si le rectangle est arrondi, faux sinon.
      */
     public boolean getArrondi () {
-
-	return (arcLargeur>0 || arcHauteur>0);
+       return (arcLargeur>0 || arcHauteur>0);
     }
 
     /**
@@ -560,8 +553,7 @@ public class Rectangle extends Dessin {
      * @return Vrai si la forme est dessinée plein, faux sinon.
      */
     public boolean getPlein () {
-
-	return plein;
+       return plein;
     }
 
     /**
@@ -570,8 +562,7 @@ public class Rectangle extends Dessin {
      * @return Boite englobante entourant le Rectangle.
      */
     public BoiteEnglobante getBoiteEnglobante () {
-
-	return new BoiteEnglobante ( a, b );
+       return new BoiteEnglobante ( a, b );
     }
 
     /**
@@ -579,9 +570,9 @@ public class Rectangle extends Dessin {
      * @param dx pas de translation suivant X
      * @param dy pas de translation suivant Y
      */
-    public void translater ( int dx, int dy ){
-	a.translater(dx,dy);
-	b.translater(dx,dy);
+    public void translater ( double dx, double dy ){
+        a.translater(dx,dy);
+        b.translater(dx,dy);
     }
 
     // Setter //
@@ -594,9 +585,9 @@ public class Rectangle extends Dessin {
      */
     public void setA ( Point a ) {
 
-	this.a = new Point(a);
-	if(a.getX()>b.getX() || a.getY()>b.getY())
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle dont le coin bas gauche se trouve au dessus ou à droite du coin haut droite. Coin bas gauche : "+a+". Coin haut droit : "+b);
+        this.a = new Point(a);
+        if(a.getX()>b.getX() || a.getY()>b.getY())
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle dont le coin bas gauche se trouve au dessus ou à droite du coin haut droite. Coin bas gauche : "+a+". Coin haut droit : "+b);
     }
 
     /**
@@ -606,10 +597,9 @@ public class Rectangle extends Dessin {
      * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html" target="_blank">RuntimeException</a>
      */
     public void setB ( Point b ) {
-
-	this.b = new Point(b);
-	if(a.getX()>b.getX() || a.getY()>b.getY())
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle dont le coin bas gauche se trouve au dessus ou à droite du coin haut droite. Coin bas gauche : "+a+". Coin haut droit : "+b);
+        this.b = new Point(b);
+        if(a.getX()>b.getX() || a.getY()>b.getY())
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle dont le coin bas gauche se trouve au dessus ou à droite du coin haut droite. Coin bas gauche : "+a+". Coin haut droit : "+b);
     }
 
     /**
@@ -618,11 +608,10 @@ public class Rectangle extends Dessin {
      * @exception java.lang.RuntimeException Cette exception est lancée si :<ul><li>les arrondis ont des dimensions négatives</li><li>si on tente de construire un rectangle avec des dimensions négatives</li><li>si le coin bas gauche et au dessus ou à droite du coin haut droit.</li></ul>.
      * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html" target="_blank">RuntimeException</a>
      */
-    public void setArcLargeur ( int arcLargeur ) {
-
-	this.arcLargeur = arcLargeur;
-	if(arcLargeur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un arrondi en largeur de "+arcLargeur);
+    public void setArcLargeur ( double arcLargeur ) {
+        this.arcLargeur = arcLargeur;
+        if(arcLargeur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un arrondi en largeur de "+arcLargeur);
     }
 
     /**
@@ -631,11 +620,10 @@ public class Rectangle extends Dessin {
      * @exception java.lang.RuntimeException Cette exception est lancée si :<ul><li>les arrondis ont des dimensions négatives</li><li>si on tente de construire un rectangle avec des dimensions négatives</li><li>si le coin bas gauche et au dessus ou à droite du coin haut droit.</li></ul>.
      * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html" target="_blank">RuntimeException</a>
      */
-    public void setArcHauteur ( int arcHauteur ) {
-
-	this.arcHauteur = arcHauteur;
-	if(arcHauteur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un arrondi en hauteur de "+arcHauteur);
+    public void setArcHauteur ( double arcHauteur ) {
+        this.arcHauteur = arcHauteur;
+        if(arcHauteur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un arrondi en hauteur de "+arcHauteur);
     }
 
     /**
@@ -643,8 +631,7 @@ public class Rectangle extends Dessin {
      * @param plein Défini si la forme doit être dessinée pleine ou non.
      */
     public void setPlein ( boolean plein ) {
-
-	this.plein = plein;
+	    this.plein = plein;
     }
 
     /**
@@ -654,10 +641,10 @@ public class Rectangle extends Dessin {
      * @exception java.lang.RuntimeException Cette exception est lancée si :<ul><li>les arrondis ont des dimensions négatives</li><li>si on tente de construire un rectangle avec des dimensions négatives</li><li>si le coin bas gauche et au dessus ou à droite du coin haut droit.</li></ul>.
      * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html" target="_blank">RuntimeException</a>
      */
-    public void setHauteur(int hauteur){
-	b = new Point ( getB().getX(), getA().getY() + hauteur ) ;
-	if(hauteur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle de hauteur négative : "+hauteur);
+    public void setHauteur(double hauteur){
+        b = new Point ( getB().getX(), getA().getY() + hauteur ) ;
+        if(hauteur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle de hauteur négative : "+hauteur);
     }
 
     /**
@@ -667,10 +654,10 @@ public class Rectangle extends Dessin {
      * @exception java.lang.RuntimeException Cette exception est lancée si :<ul><li>les arrondis ont des dimensions négatives</li><li>si on tente de construire un rectangle avec des dimensions négatives</li><li>si le coin bas gauche et au dessus ou à droite du coin haut droit.</li></ul>.
      * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html" target="_blank">RuntimeException</a>
      */
-    public void setLargeur(int largeur){
-	b = new Point ( getA().getX() + largeur, getB().getY() ) ;
-	if(largeur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle de largeur négative : "+largeur);
+    public void setLargeur(double largeur){
+        b = new Point ( getA().getX() + largeur, getB().getY() ) ;
+        if(largeur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle de largeur négative : "+largeur);
     }
 
     /**
@@ -681,12 +668,12 @@ public class Rectangle extends Dessin {
      * @exception java.lang.RuntimeException Cette exception est lancée si :<ul><li>les arrondis ont des dimensions négatives</li><li>si on tente de construire un rectangle avec des dimensions négatives</li><li>si le coin bas gauche et au dessus ou à droite du coin haut droit.</li></ul>.
      * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html" target="_blank">RuntimeException</a>
      */
-    public void setTaille(int largeur, int hauteur){
-	b = new Point ( getA().getX() + largeur, getA().getY() + hauteur ) ;
-	if(largeur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle de largeur négative : "+largeur);
-	if(hauteur<0)
-	    throw new java.lang.RuntimeException("Impossible de créer un rectangle de hauteur négative : "+hauteur);
+    public void setTaille(double largeur, double hauteur){
+        b = new Point ( getA().getX() + largeur, getA().getY() + hauteur ) ;
+        if(largeur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle de largeur négative : "+largeur);
+        if(hauteur<0)
+            throw new java.lang.RuntimeException("Impossible de créer un rectangle de hauteur négative : "+hauteur);
     }
 
     // Méthodes //
@@ -703,16 +690,16 @@ public class Rectangle extends Dessin {
 	g.setColor ( getCouleur() );
 
 	if ( getArrondi() && plein )
-	    g.fillRoundRect ( a.getX(), (int)g.getClipBounds().getHeight()-a.getY()-getHauteur(), getLargeur(), getHauteur(), arcLargeur, arcHauteur );
+	    g.fillRoundRect ( (int)a.getX(), (int)g.getClipBounds().getHeight()-((int)a.getY())-((int)getHauteur()), (int)getLargeur(), (int)getHauteur(), (int)arcLargeur, (int)arcHauteur );
 
 	else if ( getArrondi() )
-	    g.drawRoundRect ( a.getX(), (int)g.getClipBounds().getHeight()-a.getY()-getHauteur(), getLargeur(), getHauteur(), arcLargeur, arcHauteur );
+	    g.drawRoundRect ( (int)a.getX(), (int)g.getClipBounds().getHeight()-((int)a.getY())-((int)getHauteur()), (int)getLargeur(), (int)getHauteur(), (int)arcLargeur, (int)arcHauteur );
 
 	else if ( plein )
-	    g.fillRect ( a.getX(), (int)g.getClipBounds().getHeight()-a.getY()-getHauteur(), getLargeur(), getHauteur() );
+	    g.fillRect ( (int)a.getX(), (int)g.getClipBounds().getHeight()-((int)a.getY())-((int)getHauteur()), (int)getLargeur(), (int)getHauteur() );
 
 	else
-	    g.drawRect ( a.getX(), (int)g.getClipBounds().getHeight()-a.getY()-getHauteur(), getLargeur(), getHauteur() );
+	    g.drawRect ( (int)a.getX(), (int)g.getClipBounds().getHeight()-((int)a.getY())-((int)getHauteur()), (int)getLargeur(), (int)getHauteur() );
     }
 
     // Intersections //
@@ -729,29 +716,29 @@ public class Rectangle extends Dessin {
      */
     public boolean intersection ( Ligne l ) {
 
-	boolean collision = false;
+        boolean collision = false;
 
-	Point AxBy = new Point ( a.getX(), b.getY() );
-	Point BxAy = new Point ( b.getX(), a.getY() );
+        Point AxBy = new Point ( a.getX(), b.getY() );
+        Point BxAy = new Point ( b.getX(), a.getY() );
 
-	Ligne a_AxBy = new Ligne ( a, AxBy );
-	Ligne AxBy_b = new Ligne ( AxBy, b );
-	Ligne b_BxAy = new Ligne ( b, BxAy );
-	Ligne BxAy_a = new Ligne ( BxAy, a );
+        Ligne a_AxBy = new Ligne ( a, AxBy );
+        Ligne AxBy_b = new Ligne ( AxBy, b );
+        Ligne b_BxAy = new Ligne ( b, BxAy );
+        Ligne BxAy_a = new Ligne ( BxAy, a );
 
-	if ( l.intersection ( a_AxBy ) ||
-	     l.intersection ( AxBy_b ) ||
-	     l.intersection ( b_BxAy ) ||
-	     l.intersection ( BxAy_a ) ||
-	     ( l.getA().getX() > a.getX() &&
-	       l.getA().getY() > a.getY() &&
-	       l.getB().getX() < b.getX() &&
-	       l.getB().getY() < b.getY()
-	       )
-	     )
-	    collision = true;
+        if ( l.intersection ( a_AxBy ) ||
+            l.intersection ( AxBy_b ) ||
+            l.intersection ( b_BxAy ) ||
+            l.intersection ( BxAy_a ) ||
+            ( l.getA().getX() > a.getX() &&
+            l.getA().getY() > a.getY() &&
+            l.getB().getX() < b.getX() &&
+            l.getB().getY() < b.getY()
+            )
+            )
+            collision = true;
 
-	return collision;
+        return collision;
     }
 
     // Rectangle - Rectangle : Boite Englobante //
@@ -770,27 +757,27 @@ public class Rectangle extends Dessin {
      */
     public boolean intersection ( Cercle c ) {
 
-	boolean collision = false;
+        boolean collision = false;
 
-	int x = c.getO().getX();
-	int y = c.getO().getY();
+        double x = c.getO().getX();
+        double y = c.getO().getY();
 
-	if ( x < a.getX() )
-	    x = a.getX();
+        if ( x < a.getX() )
+            x = a.getX();
 
-	if ( x > ( a.getX() + getLargeur() ) )
-	    x = ( a.getX() + getLargeur() );
+        if ( x > ( a.getX() + getLargeur() ) )
+            x = ( a.getX() + getLargeur() );
 
-	if ( y <  a.getY() )
-	    y = a.getY();
+        if ( y <  a.getY() )
+            y = a.getY();
 
-	if ( y > ( a.getY() + getHauteur() ) )
-	    y = ( a.getY() + getHauteur() );
+        if ( y > ( a.getY() + getHauteur() ) )
+            y = ( a.getY() + getHauteur() );
 
-	if ( ( c.getO().getX() - x ) * ( c.getO().getX() - x ) + ( c.getO().getY() - y ) * ( c.getO().getY() - y ) < c.getRayon() * c.getRayon() )
-	    collision = true;
+        if ( ( c.getO().getX() - x ) * ( c.getO().getX() - x ) + ( c.getO().getY() - y ) * ( c.getO().getY() - y ) < c.getRayon() * c.getRayon() )
+            collision = true;
 
-	return collision;
+        return collision;
     }
 
     // Rectangle - Triangle //
@@ -803,35 +790,35 @@ public class Rectangle extends Dessin {
      */
     public boolean intersection ( Triangle t ) {
 
-	boolean collision = false;
+        boolean collision = false;
 
-	Point AxBy = new Point ( a.getX(), b.getY() );
-	Point BxAy = new Point ( b.getX(), a.getY() );
+        Point AxBy = new Point ( a.getX(), b.getY() );
+        Point BxAy = new Point ( b.getX(), a.getY() );
 
-	Ligne a_AxBy = new Ligne ( a, AxBy );
-	Ligne AxBy_b = new Ligne ( AxBy, b );
-	Ligne b_BxAy = new Ligne ( b, BxAy );
-	Ligne BxAy_a = new Ligne ( BxAy, a );
+        Ligne a_AxBy = new Ligne ( a, AxBy );
+        Ligne AxBy_b = new Ligne ( AxBy, b );
+        Ligne b_BxAy = new Ligne ( b, BxAy );
+        Ligne BxAy_a = new Ligne ( BxAy, a );
 
-	Ligne tAB = new Ligne ( t.getA(), t.getB() );
-	Ligne tBC = new Ligne ( t.getB(), t.getC() );
-	Ligne tCA = new Ligne ( t.getC(), t.getA() );
+        Ligne tAB = new Ligne ( t.getA(), t.getB() );
+        Ligne tBC = new Ligne ( t.getB(), t.getC() );
+        Ligne tCA = new Ligne ( t.getC(), t.getA() );
 
-	if ( ( a_AxBy.intersection ( tAB ) || a_AxBy.intersection ( tBC ) || a_AxBy.intersection ( tCA ) ) ||
-	     ( AxBy_b.intersection ( tAB ) || AxBy_b.intersection ( tBC ) || AxBy_b.intersection ( tCA ) ) ||
-	     ( b_BxAy.intersection ( tAB ) || b_BxAy.intersection ( tBC ) || b_BxAy.intersection ( tCA ) ) ||
-	     ( BxAy_a.intersection ( tAB ) || BxAy_a.intersection ( tBC ) || BxAy_a.intersection ( tCA ) ) ||
-	     ( ( t.getA().getX() > a.getX() && t.getA().getY() > a.getY() ) &&
-	       ( t.getA().getX() < b.getX() && t.getA().getY() < b.getY() ) &&
-	       ( t.getB().getX() > a.getX() && t.getB().getY() > a.getY() ) &&
-	       ( t.getB().getX() < b.getX() && t.getB().getY() < b.getY() ) &&
-	       ( t.getC().getX() > a.getX() && t.getC().getY() > a.getY() ) &&
-	       ( t.getC().getX() < b.getX() && t.getC().getY() < b.getY() )
-	       )
-	     )
-	    collision = true;
+        if ( ( a_AxBy.intersection ( tAB ) || a_AxBy.intersection ( tBC ) || a_AxBy.intersection ( tCA ) ) ||
+            ( AxBy_b.intersection ( tAB ) || AxBy_b.intersection ( tBC ) || AxBy_b.intersection ( tCA ) ) ||
+            ( b_BxAy.intersection ( tAB ) || b_BxAy.intersection ( tBC ) || b_BxAy.intersection ( tCA ) ) ||
+            ( BxAy_a.intersection ( tAB ) || BxAy_a.intersection ( tBC ) || BxAy_a.intersection ( tCA ) ) ||
+            ( ( t.getA().getX() > a.getX() && t.getA().getY() > a.getY() ) &&
+            ( t.getA().getX() < b.getX() && t.getA().getY() < b.getY() ) &&
+            ( t.getB().getX() > a.getX() && t.getB().getY() > a.getY() ) &&
+            ( t.getB().getX() < b.getX() && t.getB().getY() < b.getY() ) &&
+            ( t.getC().getX() > a.getX() && t.getC().getY() > a.getY() ) &&
+            ( t.getC().getX() < b.getX() && t.getC().getY() < b.getY() )
+            )
+            )
+            collision = true;
 
-	return collision;
+        return collision;
     }
 
     /**
@@ -840,10 +827,10 @@ public class Rectangle extends Dessin {
      * @return Une chaîne de caractères décrivant le rectangle.
      */
     public String toString(){
-	String classe=getClass().toString();
-	String classeSplit[]=classe.split(" ");
-	int index=classeSplit[1].lastIndexOf('.');
-	return new String(classeSplit[1].substring(index+1,classeSplit[1].length())+" de "+getA()+" en "+getB());
+        String classe=getClass().toString();
+        String classeSplit[]=classe.split(" ");
+        int index=classeSplit[1].lastIndexOf('.');
+        return new String(classeSplit[1].substring(index+1,classeSplit[1].length())+" de "+getA()+" en "+getB());
     }
 
     /**
@@ -851,16 +838,16 @@ public class Rectangle extends Dessin {
      * @return Vrai si l'objet passé en paramètre est un rectangle dont les caractéristiques sont les mêmes que le rectangle sur lequel la méthode est appelée.
      */
     public boolean equals(Object obj){
-	if (obj==this) {
-            return true;
-        }
+        if (obj==this) {
+                return true;
+            }
 
-        // Vérification du type du paramètre
-        if (obj instanceof Rectangle) {
-            // Vérification des valeurs des attributs
-	    Rectangle other = (Rectangle) obj;
-	    return super.equals(other) && a.equals(other.a) && b.equals(other.b) && arcLargeur==other.arcLargeur && arcHauteur==other.arcHauteur && plein==other.plein;
-	}
-	return false;
+            // Vérification du type du paramètre
+            if (obj instanceof Rectangle) {
+                // Vérification des valeurs des attributs
+                Rectangle other = (Rectangle) obj;
+                return super.equals(other) && a.equals(other.a) && b.equals(other.b) && arcLargeur==other.arcLargeur && arcHauteur==other.arcHauteur && plein==other.plein;
+            }
+        return false;
     }
 }

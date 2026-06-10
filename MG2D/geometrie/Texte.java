@@ -61,17 +61,17 @@ public class Texte extends Dessin {
      * Construit le texte noir "Ceci est un texte" centré en (100,100).
      */
     public Texte(){
-	super();
-	texte = new String("Ceci est un texte");
-	police = new Font("Calibri", Font.TYPE1_FONT, 10);
-	a = new Point(100,100);
+        super();
+        texte = new String("Ceci est un texte");
+        police = new Font("Calibri", Font.TYPE1_FONT, 10);
+        a = new Point(100,100);
 
-	Graphics g = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB).getGraphics();
-	FontMetrics metr = g.getFontMetrics ( police );
+        Graphics g = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB).getGraphics();
+        FontMetrics metr = g.getFontMetrics ( police );
 
-	largeur = metr.stringWidth ( texte );
-	hauteur = police.getSize();
-	typeAlign = CENTRE;
+        largeur = metr.stringWidth ( texte );
+        hauteur = police.getSize();
+        typeAlign = CENTRE;
     }
 
     /**
@@ -79,16 +79,16 @@ public class Texte extends Dessin {
      * @param t Le texte à copier.
      */
     public Texte (Texte t){
-	super(t.getCouleur());
-	texte=new String(t.texte);
-	police = new Font(t.police.getFontName(), t.police.getStyle(), t.police.getSize());
-	a = new Point(t.a);
-	Graphics g = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB).getGraphics();
-	FontMetrics metr = g.getFontMetrics ( police );
+        super(t.getCouleur());
+        texte=new String(t.texte);
+        police = new Font(t.police.getFontName(), t.police.getStyle(), t.police.getSize());
+        a = new Point(t.a);
+        Graphics g = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB).getGraphics();
+        FontMetrics metr = g.getFontMetrics ( police );
 
-	largeur = metr.stringWidth ( texte );
-	hauteur = police.getSize();
-	typeAlign=t.typeAlign;
+        largeur = metr.stringWidth ( texte );
+        hauteur = police.getSize();
+        typeAlign=t.typeAlign;
     }
 
     // Couleur par défaut //
@@ -105,17 +105,17 @@ public class Texte extends Dessin {
      */
     public Texte ( String texte, Font police, Point a ) {
 
-	super ( Couleur.NOIR );
+        super ( Couleur.NOIR );
 
-	this.texte = new String(texte);
-	this.police = police;
-	this.a = new Point ( a );
-	Graphics g = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB).getGraphics();
-	FontMetrics metr = g.getFontMetrics ( police );
+        this.texte = new String(texte);
+        this.police = police;
+        this.a = new Point ( a );
+        Graphics g = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB).getGraphics();
+        FontMetrics metr = g.getFontMetrics ( police );
 
-	largeur = metr.stringWidth ( texte );
-	hauteur = police.getSize();
-	typeAlign = CENTRE;
+        largeur = metr.stringWidth ( texte );
+        hauteur = police.getSize();
+        typeAlign = CENTRE;
     }
 
     /**
@@ -131,17 +131,17 @@ public class Texte extends Dessin {
      */
     public Texte ( String texte, Font police, Point a, int typeAlign ) {
 
-	super ( Couleur.NOIR );
+        super ( Couleur.NOIR );
 
-	this.texte = new String(texte);
-	this.police = police;
-	this.a = new Point ( a );
-	Graphics g = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB).getGraphics();
-	FontMetrics metr = g.getFontMetrics ( police );
+        this.texte = new String(texte);
+        this.police = police;
+        this.a = new Point ( a );
+        Graphics g = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB).getGraphics();
+        FontMetrics metr = g.getFontMetrics ( police );
 
-	largeur = metr.stringWidth ( texte );
-	hauteur = police.getSize();
-	this.typeAlign = typeAlign;
+        largeur = metr.stringWidth ( texte );
+        hauteur = police.getSize();
+        this.typeAlign = typeAlign;
     }
 
     // Couleur définie par l'utilisateur //
@@ -158,17 +158,17 @@ public class Texte extends Dessin {
      */
     public Texte ( Couleur couleur, String texte, Font police, Point a ) {
 
-	super ( couleur );
+        super ( couleur );
 
-	this.texte = new String(texte);
-	this.police = police;
-	this.a = new Point ( a );
-	Graphics g = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB).getGraphics();
-	FontMetrics metr = g.getFontMetrics ( police );
+        this.texte = new String(texte);
+        this.police = police;
+        this.a = new Point ( a );
+        Graphics g = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB).getGraphics();
+        FontMetrics metr = g.getFontMetrics ( police );
 
-	largeur = metr.stringWidth ( texte );
-	hauteur = police.getSize();
-	typeAlign = CENTRE;
+        largeur = metr.stringWidth ( texte );
+        hauteur = police.getSize();
+        typeAlign = CENTRE;
     }
 
     /**
@@ -184,18 +184,18 @@ public class Texte extends Dessin {
      */
     public Texte ( Couleur couleur, String texte, Font police, Point a, int typeAlign ) {
 
-	super ( couleur );
+        super ( couleur );
 
-	this.texte = new String(texte);
-	this.police = police;
-	this.a = new Point ( a );
+        this.texte = new String(texte);
+        this.police = police;
+        this.a = new Point ( a );
 
-	Graphics g = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB).getGraphics();
-	FontMetrics metr = g.getFontMetrics ( police );
+        Graphics g = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB).getGraphics();
+        FontMetrics metr = g.getFontMetrics ( police );
 
-	largeur = metr.stringWidth ( texte );
-	hauteur = police.getSize();
-	this.typeAlign = typeAlign;
+        largeur = metr.stringWidth ( texte );
+        hauteur = police.getSize();
+        this.typeAlign = typeAlign;
     }
 
     // Accesseurs //
@@ -208,7 +208,7 @@ public class Texte extends Dessin {
      */
     public String getTexte () {
 
-	return new String(texte);
+	    return new String(texte);
     }
 
     /**
@@ -218,7 +218,7 @@ public class Texte extends Dessin {
      */
     public Font getPolice () {
 
-	return police;
+	    return police;
     }
 
     /**
@@ -228,7 +228,7 @@ public class Texte extends Dessin {
      */
     public Point getA () {
 
-	return new Point(a);
+	    return new Point(a);
     }
 
     /**
@@ -236,7 +236,7 @@ public class Texte extends Dessin {
      * @return Largeur du texte.
      */
     public int getLargeur () {
-	return largeur;
+	    return largeur;
     }
 
     /**
@@ -244,7 +244,7 @@ public class Texte extends Dessin {
      * @return Largeur du texte.
      */
     public int getHauteur () {
-	return hauteur;
+	    return hauteur;
     }
 
     /**
@@ -253,16 +253,16 @@ public class Texte extends Dessin {
      * @return BoiteEnglobante BoiteEnglobante entourant le texte.
      */
     public BoiteEnglobante getBoiteEnglobante() {
-	if(typeAlign==CENTRE){
-	    Point bg = new Point(a.getX()-largeur/2,a.getY()-(hauteur/2));
-	    Point hd = new Point(a.getX()+largeur/2,a.getY()+(hauteur/2));
-	    
-	    return new BoiteEnglobante(bg,hd);
-	}
-	
-	Point bg = new Point(a.getX(),a.getY()-(hauteur/2));
-	Point hd = new Point(a.getX()+largeur,a.getY()+(hauteur/2));
-	return new BoiteEnglobante(bg,hd);
+        if(typeAlign==CENTRE){
+            Point bg = new Point(a.getX()-largeur/2,a.getY()-(hauteur/2));
+            Point hd = new Point(a.getX()+largeur/2,a.getY()+(hauteur/2));
+            
+            return new BoiteEnglobante(bg,hd);
+        }
+        
+        Point bg = new Point(a.getX(),a.getY()-(hauteur/2));
+        Point hd = new Point(a.getX()+largeur,a.getY()+(hauteur/2));
+        return new BoiteEnglobante(bg,hd);
 	
     }
 
@@ -271,8 +271,8 @@ public class Texte extends Dessin {
      * @param dx pas de translation suivant X
      * @param dy pas de translation suivant Y
      */
-    public void translater ( int dx, int dy ){
-	a.translater(dx,dy);
+    public void translater ( double dx, double dy ){
+	    a.translater(dx,dy);
     }
 
     // Setter //
@@ -283,7 +283,7 @@ public class Texte extends Dessin {
      */
     public void setTexte ( String texte ) {
 
-	this.texte = new String(texte);
+	    this.texte = new String(texte);
     }
 
     /**
@@ -293,7 +293,7 @@ public class Texte extends Dessin {
      */
     public void setPolice ( Font police ) {
 
-	this.police = police;
+	    this.police = police;
     }
 
     /**
@@ -303,7 +303,7 @@ public class Texte extends Dessin {
      */
     public void setA ( Point a ) {
 
-	this.a = new Point(a);
+	    this.a = new Point(a);
     }
 
     // Méthodes //
@@ -324,12 +324,12 @@ public class Texte extends Dessin {
        
 	int ox=0;
 	//Pourquoi ? je ne sais plus...
-	int oy = (int)g.getClipBounds().getHeight()-a.getY()+(metr.getHeight()/4) ;;
+	int oy = (int)g.getClipBounds().getHeight()-(int)a.getY()+(metr.getHeight()/4) ;
 	
 	if(typeAlign==GAUCHE)
-	    ox = a.getX();
+	    ox = (int) a.getX();
 	else
-	    ox = a.getX() - ( metr.stringWidth ( texte ) / 2 );
+	    ox = (int) a.getX() - ( metr.stringWidth ( texte ) / 2 );
 	
 	g.drawString ( texte, ox, oy );
     }

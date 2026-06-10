@@ -48,9 +48,9 @@ public class Ligne extends Dessin {
      * Construit une ligne noir allant de (0,0) à (1,0).
      */
     public Ligne(){
-	super();
-	a = new Point();
-	b = new Point(1,0);
+        super();
+        a = new Point();
+        b = new Point(1,0);
     }
 
     /**
@@ -59,10 +59,10 @@ public class Ligne extends Dessin {
      */
     public Ligne ( Ligne l ) {
 
-	super ( l.getCouleur() );
+        super ( l.getCouleur() );
 
-	a = new Point ( l.getA() );
-	b = new Point ( l.getB() );
+        a = new Point ( l.getA() );
+        b = new Point ( l.getB() );
     }
 
     // Sans couleur //
@@ -76,7 +76,7 @@ public class Ligne extends Dessin {
      */
     public Ligne ( Point a, Point b ) {
 
-	super ( Couleur.NOIR );
+	    super ( Couleur.NOIR );
 
         this.a = new Point ( a );
         this.b = new Point ( b );
@@ -94,7 +94,7 @@ public class Ligne extends Dessin {
      */
     public Ligne ( Couleur couleur, Point a, Point b ) {
 
-	super ( couleur );
+	    super ( couleur );
 
         this.a = new Point ( a );
         this.b = new Point ( b );
@@ -109,8 +109,7 @@ public class Ligne extends Dessin {
      * @return Premier point.
      */
     public Point getA () {
-
-	return new Point(a);
+	    return new Point(a);
     }
 
     /**
@@ -118,8 +117,7 @@ public class Ligne extends Dessin {
      * @return b Second point.
      */
     public Point getB () {
-
-	return new Point(b);
+	    return new Point(b);
     }
 
     /**
@@ -129,8 +127,7 @@ public class Ligne extends Dessin {
      * @see BoiteEnglobante
      */
     public BoiteEnglobante getBoiteEnglobante () {
-
-	return new BoiteEnglobante ( a, b );
+	    return new BoiteEnglobante ( a, b );
     }
 
     /**
@@ -138,9 +135,9 @@ public class Ligne extends Dessin {
      * @param dx pas de translation suivant X
      * @param dy pas de translation suivant Y
      */
-    public void translater ( int dx, int dy ){
-	a.translater(dx,dy);
-	b.translater(dx,dy);
+    public void translater ( double dx, double dy ){
+        a.translater(dx,dy);
+        b.translater(dx,dy);
     }
 
     // Setter //
@@ -151,8 +148,7 @@ public class Ligne extends Dessin {
      * @see Point
      */
     public void setA ( Point a ) {
-
-	this.a = new Point(a);
+	    this.a = new Point(a);
     }
 
     /**
@@ -161,8 +157,7 @@ public class Ligne extends Dessin {
      * @see Point
      */
     public void setB ( Point b ) {
-
-	this.b = new Point(b);
+	    this.b = new Point(b);
     }
 
     // Méthodes //
@@ -178,7 +173,7 @@ public class Ligne extends Dessin {
 
 	g.setColor ( getCouleur() );
 
-	g.drawLine ( a.getX(), (int)g.getClipBounds().getHeight()-a.getY(), b.getX(), (int)g.getClipBounds().getHeight()-b.getY() );
+	g.drawLine ( (int)a.getX(), (int)g.getClipBounds().getHeight()-((int)a.getY()), (int)b.getX(), (int)g.getClipBounds().getHeight()-((int)b.getY()) );
     }
 
     // Intersections //
@@ -197,65 +192,65 @@ public class Ligne extends Dessin {
      */
     public boolean intersection ( Ligne l ) {
 
-	boolean collision = true;
+        boolean collision = true;
 
-	int Ax = a.getX();
-	int Ay = a.getY();
-	int Bx = b.getX();
-	int By = b.getY();
+        double Ax = a.getX();
+        double Ay = a.getY();
+        double Bx = b.getX();
+        double By = b.getY();
 
-	int Cx = l.getA().getX();
-	int Cy = l.getA().getY();
-	int Dx = l.getB().getX();
-	int Dy = l.getB().getY();
+        double Cx = l.getA().getX();
+        double Cy = l.getA().getY();
+        double Dx = l.getB().getX();
+        double Dy = l.getB().getY();
 
-	double Sx = 0, Sy = 0;
+        double Sx = 0, Sy = 0;
 
-	if ( Ax == Bx ) {
+        if ( Ax == Bx ) {
 
-	    if ( Cx == Dx )
-		collision = false;
+            if ( Cx == Dx )
+            collision = false;
 
-	    else {
+            else {
 
-		double pCD = ( Cy - Dy ) / ( Cx - Dx );
+            double pCD = ( Cy - Dy ) / ( Cx - Dx );
 
-		Sx = Ax;
-		Sy = pCD * ( Ax - Cx ) + Cy;
-	    }
-	}
+            Sx = Ax;
+            Sy = pCD * ( Ax - Cx ) + Cy;
+            }
+        }
 
-	else {
+        else {
 
-	    if ( Cx == Dx ) {
+            if ( Cx == Dx ) {
 
-		double pAB = ( Ay - By ) / ( Ax - Bx );
+            double pAB = ( Ay - By ) / ( Ax - Bx );
 
-		Sx = Cx;
-		Sy = pAB * ( Cx - Ax ) + Ay;
-	    }
+            Sx = Cx;
+            Sy = pAB * ( Cx - Ax ) + Ay;
+            }
 
-	    else {
+            else {
 
-		double pCD = ( Cy - Dy ) / ( Cx - Dx );
-		double pAB = ( Ay - By ) / ( Ax - Bx );
+            double pCD = ( Cy - Dy ) / ( Cx - Dx );
+            double pAB = ( Ay - By ) / ( Ax - Bx );
 
-		double oCD = Cy - pCD * Cx;
-		double oAB = Ay - pAB * Ax;
+            double oCD = Cy - pCD * Cx;
+            double oAB = Ay - pAB * Ax;
 
-		Sx = ( oAB - oCD ) / ( pCD - pAB );
-		Sy = pCD * Sx + oCD;
-	    }
-	}
+            Sx = ( oAB - oCD ) / ( pCD - pAB );
+            Sy = pCD * Sx + oCD;
+            }
+        }
 
-	if ( ( Sx < Ax && Sx < Bx ) || ( Sy < Ay && Sy < By ) ||
-	     ( Sx > Ax && Sx > Bx ) || ( Sy > Ay && Sy > By ) ||
-	     ( Sx < Cx && Sx < Dx ) || ( Sy < Cy && Sy < Dy ) ||
-	     ( Sx > Cx && Sx > Dx ) || ( Sy > Cy && Sy > Dy )
-	     )
-	    collision = false;
+        if ( ( Sx < Ax && Sx < Bx ) || ( Sy < Ay && Sy < By ) ||
+            ( Sx > Ax && Sx > Bx ) || ( Sy > Ay && Sy > By ) ||
+            ( Sx < Cx && Sx < Dx ) || ( Sy < Cy && Sy < Dy ) ||
+            ( Sx > Cx && Sx > Dx ) || ( Sy > Cy && Sy > Dy )
+            )
+            collision = false;
 
-	return collision;
+        return collision;
     }
 
     // Ligne - Rectangle //
@@ -307,25 +302,25 @@ public class Ligne extends Dessin {
      */
     public boolean intersection ( Cercle c ) {
 
-	boolean collision = false;
+        boolean collision = false;
 
-	int ux = b.getX() - a.getX();
-	int uy = b.getY() - a.getY();
-	int acx = c.getO().getX() - a.getX();
-	int acy = c.getO().getY() - a.getY();
+        double ux = b.getX() - a.getX();
+        double uy = b.getY() - a.getY();
+        double acx = c.getO().getX() - a.getX();
+        double acy = c.getO().getY() - a.getY();
 
-	int numerateur = ux * acy - uy * acx;
+        double numerateur = ux * acy - uy * acx;
 
-	if ( numerateur < 0 )
-	    numerateur = -numerateur;
+        if ( numerateur < 0 )
+            numerateur = -numerateur;
 
-	int denominateur = ( int ) Math.sqrt ( ux * ux + uy * uy );
-	int ci = numerateur / denominateur;
+        double denominateur = Math.sqrt ( ux * ux + uy * uy );
+        double ci = numerateur / denominateur;
 
-	if ( ci < c.getRayon() )
-	    collision = true;
+        if ( ci < c.getRayon() )
+            collision = true;
 
-	return collision;
+        return collision;
     }
 
     // Ligne - Triangle //
@@ -338,19 +333,19 @@ public class Ligne extends Dessin {
      */
     public boolean intersection ( Triangle t ) {
 
-	boolean collision = false;
+        boolean collision = false;
 
-	Ligne AB = new Ligne ( t.getA(), t.getB() );
-	Ligne BC = new Ligne ( t.getB(), t.getC() );
-	Ligne CA = new Ligne ( t.getC(), t.getA() );
+        Ligne AB = new Ligne ( t.getA(), t.getB() );
+        Ligne BC = new Ligne ( t.getB(), t.getC() );
+        Ligne CA = new Ligne ( t.getC(), t.getA() );
 
-	if ( this.intersection ( AB ) ||
-	     this.intersection ( BC ) ||
-	     this.intersection ( CA )
-	     )
-	    collision = true;
+        if ( this.intersection ( AB ) ||
+            this.intersection ( BC ) ||
+            this.intersection ( CA )
+            )
+            collision = true;
 
-	return collision;
+        return collision;
     }
 
     /**
@@ -359,7 +354,7 @@ public class Ligne extends Dessin {
      * @return Une chaîne de caractères décrivant la ligne.
      */
     public String toString(){
-	return new String("Ligne de "+getA()+" à "+getB());
+	    return new String("Ligne de "+getA()+" à "+getB());
     }
 
     /**
@@ -367,16 +362,16 @@ public class Ligne extends Dessin {
      * @return Vrai si l'objet passé en paramètre est une ligne dont les caractéristiques sont les mêmes que la ligne sur lequel la méthode est appelée.
      */
     public boolean equals(Object obj){
-	if (obj==this) {
-            return true;
-        }
+        if (obj==this) {
+                return true;
+            }
 
-        // Vérification du type du paramètre
-        if (obj instanceof Ligne) {
-            // Vérification des valeurs des attributs
-             Ligne other = (Ligne) obj;
-	     return super.equals(other) && a.equals(other.a) && b.equals(other.b);
-	}
-	return false;
+            // Vérification du type du paramètre
+            if (obj instanceof Ligne) {
+                // Vérification des valeurs des attributs
+                Ligne other = (Ligne) obj;
+            return super.equals(other) && a.equals(other.a) && b.equals(other.b);
+        }
+        return false;
     }
 }

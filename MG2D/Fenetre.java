@@ -80,42 +80,42 @@ public class Fenetre extends JFrame {
      */
     public Fenetre () {
 
-	//Non instanciation du clavier et de la souris
-	c=null;
-	s=null;
+        //Non instanciation du clavier et de la souris
+        c=null;
+        s=null;
 
-	d = new Dimension ( 800, 600 );
-	p = new Panneau ();
+        d = new Dimension ( 800, 600 );
+        p = new Panneau ();
 
-	p.setPreferredSize ( d ); // On indique que l'on souhaite avoir un Panneau de la Dimension (largeur, hauteur) //
+        p.setPreferredSize ( d ); // On indique que l'on souhaite avoir un Panneau de la Dimension (largeur, hauteur) //
 
-	this.setContentPane ( p );
+        this.setContentPane ( p );
 
-	this.pack(); // Permet d'attribuer automatiquement la dimension de la Fenetre grâce à ce qui la compose (ici en l'occurence, le Panneau) //
+        this.pack(); // Permet d'attribuer automatiquement la dimension de la Fenetre grâce à ce qui la compose (ici en l'occurence, le Panneau) //
 
-	this.setTitle ( new String("Mon appli MG2D") );
-	titre=new String("Mon appli MG2D");
+        this.setTitle ( new String("Mon appli MG2D") );
+        titre=new String("Mon appli MG2D");
 
-	this.setLocationRelativeTo ( null );
-	this.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE );
-	this.setResizable ( false ); // On empêche le redimensionnement pour éviter les problèmes de centrages des objets //
+        this.setLocationRelativeTo ( null );
+        this.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE );
+        this.setResizable ( false ); // On empêche le redimensionnement pour éviter les problèmes de centrages des objets //
 
-	this.setVisible ( true );
+        this.setVisible ( true );
 
-	if ( p.getWidth() != d.getWidth() || p.getHeight() != d.getHeight() ) { // Si le Panneau ne fait toujours pas la taille voulue, on force le changement //
+        if ( p.getWidth() != d.getWidth() || p.getHeight() != d.getHeight() ) { // Si le Panneau ne fait toujours pas la taille voulue, on force le changement //
 
-	    p.setSize ( d );
-	    p.setMinimumSize( d );
-	    p.setMaximumSize( d );
-	    this.pack();
-	    // Je ne comprends pas pourquoi ces 2 lignes sont nécessaires mais il ne faut pas les enlever !
-	    revalidate();
-	    pack();
-	}
-	dernierEvt = new Date().getTime();
-	affichageFPS=false;
-	dernierAffichage=dernierEvt;
-	affichageNbPrimitives=false;
+            p.setSize ( d );
+            p.setMinimumSize( d );
+            p.setMaximumSize( d );
+            this.pack();
+            // Je ne comprends pas pourquoi ces 2 lignes sont nécessaires mais il ne faut pas les enlever !
+            revalidate();
+            pack();
+        }
+        dernierEvt = new Date().getTime();
+        affichageFPS=false;
+        dernierAffichage=dernierEvt;
+        affichageNbPrimitives=false;
     }
 
     /**
@@ -130,42 +130,42 @@ public class Fenetre extends JFrame {
      */
     public Fenetre ( String ttitre, int largeur, int hauteur ) {
 
-	//Non instanciation du clavier et de la souris
-	c=null;
-	s=null;
+        //Non instanciation du clavier et de la souris
+        c=null;
+        s=null;
 
-	d = new Dimension ( largeur, hauteur );
-	p = new Panneau ();
+        d = new Dimension ( largeur, hauteur );
+        p = new Panneau ();
 
-	p.setPreferredSize ( d ); // On indique que l'on souhaite avoir un Panneau de la Dimension (largeur, hauteur) //
+        p.setPreferredSize ( d ); // On indique que l'on souhaite avoir un Panneau de la Dimension (largeur, hauteur) //
 
-	this.setContentPane ( p );
+        this.setContentPane ( p );
 
-	this.pack(); // Permet d'attribuer automatiquement la dimension de la Fenetre grâce à ce qui la compose (ici en l'occurence, le Panneau) //
+        this.pack(); // Permet d'attribuer automatiquement la dimension de la Fenetre grâce à ce qui la compose (ici en l'occurence, le Panneau) //
 
-	this.setTitle ( new String(ttitre) );
-	titre=new String(ttitre);
+        this.setTitle ( new String(ttitre) );
+        titre=new String(ttitre);
 
-	this.setLocationRelativeTo ( null );
-	this.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE );
-	this.setResizable ( false ); // On empêche le redimensionnement pour éviter les problèmes de centrages des objets //
+        this.setLocationRelativeTo ( null );
+        this.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE );
+        this.setResizable ( false ); // On empêche le redimensionnement pour éviter les problèmes de centrages des objets //
 
-	this.setVisible ( true );
+        this.setVisible ( true );
 
-	if ( p.getWidth() != d.getWidth() || p.getHeight() != d.getHeight() ) { // Si le Panneau ne fait toujours pas la taille voulue, on force le changement //
+        if ( p.getWidth() != d.getWidth() || p.getHeight() != d.getHeight() ) { // Si le Panneau ne fait toujours pas la taille voulue, on force le changement //
 
-	    p.setSize ( d );
-	    p.setMinimumSize( d );
-	    p.setMaximumSize( d );
-	    this.pack();
-	    // Je ne comprends pas pourquoi ces 2 lignes sont nécessaires mais il ne faut pas les enlever !
-	    revalidate();
-	    pack();
-	}
-	dernierEvt = new Date().getTime();
-	affichageFPS=false;
-	dernierAffichage=dernierEvt;
-	affichageNbPrimitives=false;
+            p.setSize ( d );
+            p.setMinimumSize( d );
+            p.setMaximumSize( d );
+            this.pack();
+            // Je ne comprends pas pourquoi ces 2 lignes sont nécessaires mais il ne faut pas les enlever !
+            revalidate();
+            pack();
+        }
+        dernierEvt = new Date().getTime();
+        affichageFPS=false;
+        dernierAffichage=dernierEvt;
+        affichageNbPrimitives=false;
     }
 
     /**
@@ -181,43 +181,43 @@ public class Fenetre extends JFrame {
      */
     public Fenetre ( String ttitre, int largeur, int hauteur, String icon) {
 
-	//Non instanciation du clavier et de la souris
-	c=null;
-	s=null;
+        //Non instanciation du clavier et de la souris
+        c=null;
+        s=null;
 
-	d = new Dimension ( largeur, hauteur );
-	p = new Panneau ();
+        d = new Dimension ( largeur, hauteur );
+        p = new Panneau ();
 
-	p.setPreferredSize ( d ); // On indique que l'on souhaite avoir un Panneau de la Dimension (largeur, hauteur) //
+        p.setPreferredSize ( d ); // On indique que l'on souhaite avoir un Panneau de la Dimension (largeur, hauteur) //
 
-	this.setContentPane ( p );
+        this.setContentPane ( p );
 
-	this.pack(); // Permet d'attribuer automatiquement la dimension de la Fenetre grâce à ce qui la compose (ici en l'occurence, le Panneau) //
+        this.pack(); // Permet d'attribuer automatiquement la dimension de la Fenetre grâce à ce qui la compose (ici en l'occurence, le Panneau) //
 
-	this.setTitle ( new String(ttitre) );
-	titre=new String(ttitre);
-	this.setIconImage(new ImageIcon(icon).getImage());
+        this.setTitle ( new String(ttitre) );
+        titre=new String(ttitre);
+        this.setIconImage(new ImageIcon(icon).getImage());
 
-	this.setLocationRelativeTo ( null );
-	this.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE );
-	this.setResizable ( false ); // On empêche le redimensionnement pour éviter les problèmes de centrages des objets //
+        this.setLocationRelativeTo ( null );
+        this.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE );
+        this.setResizable ( false ); // On empêche le redimensionnement pour éviter les problèmes de centrages des objets //
 
-	this.setVisible ( true );
+        this.setVisible ( true );
 
-	if ( p.getWidth() != d.getWidth() || p.getHeight() != d.getHeight() ) { // Si le Panneau ne fait toujours pas la taille voulue, on force le changement //
+        if ( p.getWidth() != d.getWidth() || p.getHeight() != d.getHeight() ) { // Si le Panneau ne fait toujours pas la taille voulue, on force le changement //
 
-	    p.setSize ( d );
-	    p.setMinimumSize( d );
-	    p.setMaximumSize( d );
-	    this.pack();
-	    // Je ne comprends pas pourquoi ces 2 lignes sont nécessaires mais il ne faut pas les enlever !
-	    revalidate();
-	    pack();
-	}
-	dernierEvt = new Date().getTime();
-	affichageFPS=false;
-	dernierAffichage=dernierEvt;
-	affichageNbPrimitives=false;
+            p.setSize ( d );
+            p.setMinimumSize( d );
+            p.setMaximumSize( d );
+            this.pack();
+            // Je ne comprends pas pourquoi ces 2 lignes sont nécessaires mais il ne faut pas les enlever !
+            revalidate();
+            pack();
+        }
+        dernierEvt = new Date().getTime();
+        affichageFPS=false;
+        dernierAffichage=dernierEvt;
+        affichageNbPrimitives=false;
     }
 
     // Accesseurs //
@@ -230,7 +230,7 @@ public class Fenetre extends JFrame {
      */
     public Panneau getP () {
 
-	return new Panneau(p);
+	    return new Panneau(p);
     }
 
     /**
@@ -241,9 +241,9 @@ public class Fenetre extends JFrame {
      * @see Clavier
      */
     public Clavier getClavier () {
-	c = new Clavier();
-	addKeyListener(c);
-	return c;
+        c = new Clavier();
+        addKeyListener(c);
+        return c;
     }
 
     /**
@@ -254,10 +254,10 @@ public class Fenetre extends JFrame {
      * @see Souris
      */
     public Souris getSouris () {
-	s = new Souris((int)(d.getHeight()));
-	addMouseListener(s);addMouseMotionListener(s);
-	p.addMouseListener(s);p.addMouseMotionListener(s);
-	return s;
+        s = new Souris((int)(d.getHeight()));
+        addMouseListener(s);addMouseMotionListener(s);
+        p.addMouseListener(s);p.addMouseMotionListener(s);
+        return s;
     }
 
     /**
@@ -269,8 +269,8 @@ public class Fenetre extends JFrame {
      * @see Panneau
      */
     public Point getMilieu () {
-	// p.getMilieu retourne déjà un "new Point"
-	return p.getMilieu();
+        // p.getMilieu retourne déjà un "new Point"
+        return p.getMilieu();
     }
 
     /**
@@ -278,9 +278,9 @@ public class Fenetre extends JFrame {
      * @param b paramètre à "true" si l'affichage doit se faire, "false" sinon.
      */
     public void setAffichageFPS(boolean b){
-	affichageFPS=b;
-	if(b==false && !affichageNbPrimitives)
-	    setTitle(titre);
+        affichageFPS=b;
+        if(b==false && !affichageNbPrimitives)
+            setTitle(titre);
     }
 
     /**
@@ -288,9 +288,9 @@ public class Fenetre extends JFrame {
      * @param b paramètre à "true" si l'affichage doit se faire, "false" sinon.
      */
     public void setAffichageNbPrimitives(boolean b){
-	affichageNbPrimitives=b;
-	if(b==false && !affichageFPS)
-	    setTitle(titre);
+        affichageNbPrimitives=b;
+        if(b==false && !affichageFPS)
+            setTitle(titre);
     }
 
     // Méthodes //
@@ -299,8 +299,8 @@ public class Fenetre extends JFrame {
      */
     @Override
     public void repaint(){
-	super.repaint();
-	getToolkit().sync();
+        super.repaint();
+        getToolkit().sync();
     }
 
     /**
@@ -309,23 +309,23 @@ public class Fenetre extends JFrame {
      * Permet d'appliquer la méthode repaint() à la fenêtre. Méthode présente dans un soucis de "Francisation" du code.
      */
     public void rafraichir () {
-	long temp=new Date().getTime();
-	double fps = 1000.0/(temp-dernierEvt);
-	String affichageSup="";
+        long temp=new Date().getTime();
+        double fps = 1000.0/(temp-dernierEvt);
+        String affichageSup="";
 
-	if(affichageNbPrimitives && ((temp-dernierAffichage)>1000))
-	    affichageSup=" - "+getP().getA().size()+" primitives";
+        if(affichageNbPrimitives && ((temp-dernierAffichage)>1000))
+            affichageSup=" - "+getP().getA().size()+" primitives";
 
-	if(affichageFPS && ((temp-dernierAffichage)>1000))
-	    affichageSup=affichageSup+" - "+fps;
+        if(affichageFPS && ((temp-dernierAffichage)>1000))
+            affichageSup=affichageSup+" - "+fps;
 
-	if((affichageFPS || affichageNbPrimitives) && ((temp-dernierAffichage)>1000)){
-	    setTitle(titre+affichageSup);
-	    dernierAffichage=temp;
-	}
+        if((affichageFPS || affichageNbPrimitives) && ((temp-dernierAffichage)>1000)){
+            setTitle(titre+affichageSup);
+            dernierAffichage=temp;
+        }
 
-	dernierEvt=temp;
-	repaint();
+        dernierEvt=temp;
+        repaint();
     }
 
     /**
@@ -338,7 +338,7 @@ public class Fenetre extends JFrame {
      * @see #rafraichir rafraichir()
      */
     public void effacer () {
-	p.effacer();
+	    p.effacer();
     }
 
     /**
@@ -353,7 +353,7 @@ public class Fenetre extends JFrame {
      */
     public void ajouter ( Dessin d ) {
 
-	p.ajouter ( d );
+	    p.ajouter ( d );
     }
 
     /**
@@ -368,7 +368,7 @@ public class Fenetre extends JFrame {
      */
     public void supprimer ( Dessin d ) {
 
-	p.supprimer ( d );
+	    p.supprimer ( d );
     }
 
     /**
@@ -377,38 +377,38 @@ public class Fenetre extends JFrame {
      * L'image sera créé dans le répertoire courant et aura la date du jour pour nom.
      */
     public void snapShot(){
-	try{
-	    Robot rb = new Robot();
-	    Calendar cal=Calendar.getInstance();
-	    String mois=""+(cal.get(cal.MONTH)+1);
-	    if(mois.length()==1)
-		mois="0"+mois;
-	    String jour=""+cal.get(cal.DAY_OF_MONTH);
-	    if(jour.length()==1)
-		jour="0"+jour;
-	    String heure=""+cal.get(cal.HOUR_OF_DAY);
-	    if(heure.length()==1)
-		heure="0"+heure;
-	    String minute=""+cal.get(cal.MINUTE);
-	    if(minute.length()==1)
-		minute="0"+minute;
-	    String seconde=""+cal.get(cal.SECOND);
-	    if(seconde.length()==1)
-		seconde="0"+seconde;
-	    String milliseconde=""+cal.get(cal.MILLISECOND);
-	    if(milliseconde.length()==1)
-		milliseconde="0"+milliseconde;
-	    if(milliseconde.length()==2)
-		milliseconde="0"+milliseconde;
-	    String chemin=new String(cal.get(cal.YEAR)+"_"+mois+"_"+jour+"__"+heure+"_"+minute+"_"+seconde+"_"+milliseconde+".jpg");
-	    BufferedImage bufImage = rb.createScreenCapture(new java.awt.Rectangle(getX(),getY(),getWidth(),getHeight()));
-	    File imageFile = new File(chemin);
-	    imageFile.createNewFile();
-	    ImageIO.write(bufImage, "jpeg", imageFile);
-	}
-	catch(Exception e){
-	    System.out.println(e);
-	}
+        try{
+            Robot rb = new Robot();
+            Calendar cal=Calendar.getInstance();
+            String mois=""+(cal.get(cal.MONTH)+1);
+            if(mois.length()==1)
+            mois="0"+mois;
+            String jour=""+cal.get(cal.DAY_OF_MONTH);
+            if(jour.length()==1)
+            jour="0"+jour;
+            String heure=""+cal.get(cal.HOUR_OF_DAY);
+            if(heure.length()==1)
+            heure="0"+heure;
+            String minute=""+cal.get(cal.MINUTE);
+            if(minute.length()==1)
+            minute="0"+minute;
+            String seconde=""+cal.get(cal.SECOND);
+            if(seconde.length()==1)
+            seconde="0"+seconde;
+            String milliseconde=""+cal.get(cal.MILLISECOND);
+            if(milliseconde.length()==1)
+            milliseconde="0"+milliseconde;
+            if(milliseconde.length()==2)
+            milliseconde="0"+milliseconde;
+            String chemin=new String(cal.get(cal.YEAR)+"_"+mois+"_"+jour+"__"+heure+"_"+minute+"_"+seconde+"_"+milliseconde+".jpg");
+            BufferedImage bufImage = rb.createScreenCapture(new java.awt.Rectangle(getX(),getY(),getWidth(),getHeight()));
+            File imageFile = new File(chemin);
+            imageFile.createNewFile();
+            ImageIO.write(bufImage, "jpeg", imageFile);
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
     }
 
     /**
@@ -416,25 +416,25 @@ public class Fenetre extends JFrame {
      * @param chemin Nom du fichier où doit être sauvegarder le screenshot.
      */
     public void snapShot(String chemin){
-	try{
-	    BufferedImage bufImage = new BufferedImage(getWidth(),getHeight(),BufferedImage.TYPE_INT_RGB);
-	    // call the Component's paint method, using
-	    // the Graphics object of the image.
-	    paint( bufImage.getGraphics() ); // alternately use .printAll(..)
-	    File imageFile = new File(chemin);
-	    imageFile.createNewFile();
-	    ImageIO.write(bufImage, "jpeg", imageFile);
-	}
-	catch(Exception e){
-	    System.out.println(e);
-	}
+        try{
+            BufferedImage bufImage = new BufferedImage(getWidth(),getHeight(),BufferedImage.TYPE_INT_RGB);
+            // call the Component's paint method, using
+            // the Graphics object of the image.
+            paint( bufImage.getGraphics() ); // alternately use .printAll(..)
+            File imageFile = new File(chemin);
+            imageFile.createNewFile();
+            ImageIO.write(bufImage, "jpeg", imageFile);
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
     }
 
     /**
      * Permet la fermeture de la fenêtre.
      */
     public void fermer(){
-	dispose();
+	    dispose();
     }
 
     /**
@@ -442,6 +442,7 @@ public class Fenetre extends JFrame {
      * @return Chaîne de caractères contenant la description de la fenêtre.
      */
     public String toString(){
-	return new String("Fenêtre de taille "+d.getWidth()+"x"+d.getHeight());
+	    return new String("Fenêtre de taille "+d.getWidth()+"x"+d.getHeight());
     }
+
 }

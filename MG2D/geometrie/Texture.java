@@ -57,7 +57,7 @@ public class Texture extends Rectangle {
     // Attributs //
 
     private BufferedImage img;
-    private ArrayList<Dessin> hitbox;
+    private Dessin hitbox;
 
     // Constructeurs //
 
@@ -67,7 +67,7 @@ public class Texture extends Rectangle {
      * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html" target="_blank">RuntimeException</a>
      */
     public Texture(){
-	throw new java.lang.RuntimeException("Le constructeur par défaut de Texture ne peut être appelé. Il faut au moins spécifier une image.");
+	    throw new java.lang.RuntimeException("Le constructeur par défaut de Texture ne peut être appelé. Il faut au moins spécifier une image.");
     }
 
     /**
@@ -75,10 +75,10 @@ public class Texture extends Rectangle {
      * @param t La texture à copier.
      */
     public Texture ( Texture t ){
-	super(t);
-	img = t.getImg().getSubimage(0,0,t.getLargeur(),t.getHauteur());
-	// TODO - chercher comment copier une hitbox
-	hitbox = new ArrayList<Dessin>(t.hitbox);
+        super(t);
+        img = t.getImg().getSubimage(0,0,(int) t.getLargeur(),(int) t.getHauteur());
+        // TODO - chercher comment copier une hitbox
+        hitbox = t.getHitbox();
     }
 
     // Sans couleur de fond //
@@ -94,27 +94,55 @@ public class Texture extends Rectangle {
      */
     public Texture ( String chemin, Point a ) {
 
-	super ( a, 0, 0 , false);
+        super ( a, 0, 0 , false);
 
-	try {
+        try {
 
-	    URL url = this.getClass().getResource ( "/"+chemin );
-	    img = ImageIO.read ( url );
- 
-	}
+            URL url = this.getClass().getResource ( "/"+chemin );
+            img = ImageIO.read ( url );
+    
+        }
 
-	catch ( IOException e ) {
+        catch ( IOException e ) {
 
-	    System.out.println ("[!] Erreur : L'image "+ chemin.substring(1,chemin.length()) +" est introuvable.\n" + e);
-	}
+            System.out.println ("[!] Erreur : L'image "+ chemin.substring(1,chemin.length()) +" est introuvable.\n" + e);
+        }
 
-	int largeur = img.getWidth ( null );
-	int hauteur = img.getHeight ( null );
-	setLargeur(largeur);
-	setHauteur(hauteur);
-	hitbox = new ArrayList<Dessin>();
+        int largeur = img.getWidth ( null );
+        int hauteur = img.getHeight ( null );
 
-	super.setB ( new Point ( a.getX() + largeur, a.getY() + hauteur ) );
+        setLargeur(largeur);
+        setHauteur(hauteur);
+
+        super.setB ( new Point ( a.getX() + largeur, a.getY() + hauteur ) );
+
+        hitbox = new Rectangle(getA(), getLargeur(), getHauteur());
+    }
+
+    /**
+     * Construit une Texture à partir d'une image et d'un Point.<br />
+     * <br /><br />
+     * La taille de l'image correspondra à la taille réelle de l'image. Elle ne sera pas déformée.<br />
+     * Par défaut, la transparence est activée.
+     * @param img Chaîne de caractères représente le chemin d'accès vers l'image.
+     * @param a	Position du coin bas gauche de l'image dans la zone d'affichage.
+     * @see Point
+     */
+    public Texture ( BufferedImage img, Point a ) {
+
+        super ( a, 0, 0 , false);
+
+        this.img = img;
+
+        int largeur = this.img.getWidth ( null );
+        int hauteur = this.img.getHeight ( null );
+
+        setLargeur(largeur);
+        setHauteur(hauteur);
+
+        super.setB ( new Point ( a.getX() + largeur, a.getY() + hauteur ) );
+
+        hitbox = new Rectangle(getA(), getLargeur(), getHauteur());
     }
 
     /**
@@ -122,30 +150,32 @@ public class Texture extends Rectangle {
      * Par défaut, la transparence est activée.
      * @param chemin Chaîne de caractères représente le chemin d'accès vers l'image.
      * @param a	Position du coin bas gauche de l'image dans la zone d'affichage.
-     * @param larg Largeur souhaitée de l'image.
-     * @param haut Lauteur souhaitée de l'image.
+     * @param largeur Largeur souhaitée de l'image.
+     * @param hauteur Lauteur souhaitée de l'image.
      * @see Point
      */
-    public Texture ( String chemin, Point a, int larg, int haut ) {
+    public Texture ( String chemin, Point a, double largeur, double hauteur ) {
 
-	super ( a, 0, 0 , false);
+        super ( a, 0, 0 , false);
 
-	try {
+        try {
 
-	    URL url = getClass().getResource ( "/"+chemin );
-	    img = ImageIO.read ( url );
-	}
+            URL url = getClass().getResource ( "/"+chemin );
+            img = ImageIO.read ( url );
+        }
 
-	catch ( IOException e ) {
+        catch ( IOException e ) {
 
-	    System.out.println ("[!] Erreur : L'image "+ chemin.substring(1,chemin.length()) + " est introuvable.\n" + e);
-	}
+            System.out.println ("[!] Erreur : L'image "+ chemin.substring(1,chemin.length()) + " est introuvable.\n" + e);
+        }
 
-	setLargeur(larg);
-	setHauteur(haut);
-	hitbox = new ArrayList<Dessin>();
+        setLargeur(largeur);
+        setHauteur(hauteur);
 
-	super.setB ( new Point ( a.getX() + larg, a.getY() + haut ) );
+
+        super.setB ( new Point ( a.getX() + largeur, a.getY() + hauteur ) );
+
+        hitbox = new Rectangle(getA(), getLargeur(), getHauteur());
     }
 
     // Avec couleur de fond //
@@ -163,27 +193,29 @@ public class Texture extends Rectangle {
      */
     public Texture ( Couleur couleur, String chemin, Point a ) {
 
-	super ( couleur, a, 0, 0 , true);
+        super ( couleur, a, 0, 0 , true);
 
-	try {
+        try {
 
-	    URL url = getClass().getResource ( "/"+chemin );
-	    img = ImageIO.read ( url );
-	}
+            URL url = getClass().getResource ( "/"+chemin );
+            img = ImageIO.read ( url );
+        }
 
-	catch ( IOException e ) {
+        catch ( IOException e ) {
 
-	    System.out.println ("[!] Erreur : L'image "+ chemin.substring(1,chemin.length())  +" est introuvable.\n" + e);
-	}
+            System.out.println ("[!] Erreur : L'image "+ chemin.substring(1,chemin.length())  +" est introuvable.\n" + e);
+        }
 
-	int largeur = img.getWidth ( null );
-	int hauteur = img.getHeight ( null );
+        int largeur = img.getWidth ( null );
+        int hauteur = img.getHeight ( null );
 
-	setLargeur(largeur);
-	setHauteur(hauteur);
-	hitbox = new ArrayList<Dessin>();
+        setLargeur(largeur);
+        setHauteur(hauteur);
 
-	setB ( new Point ( a.getX() + largeur, a.getY() + hauteur ) );
+
+        setB ( new Point ( a.getX() + largeur, a.getY() + hauteur ) );
+
+        hitbox = new Rectangle(getA(), getLargeur(), getHauteur());
     }
 
     /**
@@ -192,31 +224,33 @@ public class Texture extends Rectangle {
      * @param couleur Couleur de fond
      * @param chemin Chaîne de caractères représente le chemin d'accès vers l'image.
      * @param a	Position du coin bas gauche de l'image dans la zone d'affichage.
-     * @param larg Largeur souhaitée de l'image.
-     * @param haut Hauteur souhaitée de l'image.
+     * @param largeur Largeur souhaitée de l'image.
+     * @param hauteur Hauteur souhaitée de l'image.
      * @see Couleur
      * @see Point
      */
-    public Texture ( Couleur couleur, String chemin, Point a, int larg, int haut ) {
+    public Texture ( Couleur couleur, String chemin, Point a, double largeur, double hauteur ) {
 
-	super ( couleur, a, 0, 0 , true);
+        super ( couleur, a, 0, 0 , true);
 
-	try {
+        try {
 
-	    URL url = getClass().getResource ( "/"+chemin );
-	    img = ImageIO.read ( url );
-	}
+            URL url = getClass().getResource ( "/"+chemin );
+            img = ImageIO.read ( url );
+        }
 
-	catch ( IOException e ) {
+        catch ( IOException e ) {
 
-	    System.out.println ("[!] Erreur : L'image "+chemin.substring(1,chemin.length()) +" est introuvable.\n" + e);
-	}
+            System.out.println ("[!] Erreur : L'image "+chemin.substring(1,chemin.length()) +" est introuvable.\n" + e);
+        }
 
-	setLargeur(larg);
-	setHauteur(haut);
-	hitbox = new ArrayList<Dessin>();
+        setLargeur(largeur);
+        setHauteur(hauteur);
 
-	setB ( new Point ( a.getX() + larg, a.getY() + haut ) );
+
+        setB ( new Point ( a.getX() + largeur, a.getY() + hauteur ) );
+
+        hitbox = new Rectangle(getA(), getLargeur(), getHauteur());
     }
 
     // Accesseurs //
@@ -229,8 +263,7 @@ public class Texture extends Rectangle {
      * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/awt/image/BufferedImage.html" target="_blank">BufferedImage</a>
      */
     public BufferedImage getImg () {
-
-	return img;
+	    return img;
     }
 
     /**
@@ -240,15 +273,15 @@ public class Texture extends Rectangle {
      * @see Rectangle#getPlein
      */
     public boolean getTransparent () {
-	return !getPlein();
+	    return !getPlein();
     }
 
     /**
      * Retourne la hitbox - ensemble de primitives géométriques formant la hitbox de la texture.
      * @return Une liste contenant l'ensemble des primitives gégométriques formanant la hitbox.
      */
-    public ArrayList<Dessin> getHitbox(){
-	return hitbox;
+    public Dessin getHitbox(){
+	    return hitbox;
     }
 
     // Setter //
@@ -260,13 +293,24 @@ public class Texture extends Rectangle {
      */
     public void setImg ( BufferedImage img ) {
 
-	this.img = img;
-	int largeur = img.getWidth ( null );
-	int hauteur = img.getHeight ( null );
-	setLargeur(largeur);
-	setHauteur(hauteur);
+        this.img = img;
 
-	setB ( new Point ( getA().getX() + largeur, getA().getY() + hauteur ) );
+        int largeur = img.getWidth ( null );
+        int hauteur = img.getHeight ( null );
+
+        setLargeur(largeur);
+        setHauteur(hauteur);
+
+        setB ( new Point ( getA().getX() + largeur, getA().getY() + hauteur ) );
+    }
+
+    public void setImg ( BufferedImage img, double largeur, double hauteur) {
+        this.img = img;
+
+        setLargeur(largeur);
+        setHauteur(hauteur);
+
+        setB ( new Point ( getA().getX() + largeur, getA().getY() + hauteur ) );
     }
 
     /**
@@ -276,23 +320,24 @@ public class Texture extends Rectangle {
      */
     public void setImg ( String chemin ) {
 
-	try {
+        try {
 
-	    URL url = getClass().getResource ( "/"+chemin );
-	    img = ImageIO.read ( url );
-	}
+            URL url = getClass().getResource ( "/"+chemin );
+            img = ImageIO.read ( url );
+        }
 
-	catch ( IOException e ) {
+        catch ( IOException e ) {
 
-	    System.out.println ("[!] Erreur : L'image "+chemin.substring(1,chemin.length())+" est introuvable.\n" + e);
-	}
+            System.out.println ("[!] Erreur : L'image "+chemin.substring(1,chemin.length())+" est introuvable.\n" + e);
+        }
 
-	int largeur = img.getWidth ( null );
-	int hauteur = img.getHeight ( null );
-	setLargeur(largeur);
-	setHauteur(hauteur);
+        int largeur = img.getWidth ( null );
+        int hauteur = img.getHeight ( null );
 
-	super.setB ( new Point ( getA().getX() + largeur, getA().getY() + hauteur ) );
+        setLargeur(largeur);
+        setHauteur(hauteur);
+
+        super.setB ( new Point ( getA().getX() + largeur, getA().getY() + hauteur ) );
 
     }
 
@@ -304,7 +349,7 @@ public class Texture extends Rectangle {
      * @see Rectangle#setPlein
      */
     public void setTransparent ( boolean transparent ) {
-	setPlein(!transparent);
+	    setPlein(!transparent);
     }
 
     /**
@@ -313,11 +358,11 @@ public class Texture extends Rectangle {
      * @see Point
      */
     public void setA(Point aa){
-	/*int largeur = getLargeur();
-	int hauteur = getHauteur();
-	super.setB(new Point(aa.getX()+largeur,aa.getY()+hauteur));
-	super.setA(aa);*/
-	translater(aa.getX()-getA().getX(),aa.getY()-getA().getY());
+        /*int largeur = getLargeur();
+        int hauteur = getHauteur();
+        super.setB(new Point(aa.getX()+largeur,aa.getY()+hauteur));
+        super.setA(aa);*/
+	    translater(aa.getX()-getA().getX(),aa.getY()-getA().getY());
     }
 
     /**
@@ -326,29 +371,26 @@ public class Texture extends Rectangle {
      * @see Point
      */
     public void setB(Point bb){
-	/*int largeur = getLargeur();
-	int hauteur = getHauteur();
-	super.setA(new Point(bb.getX()-largeur,bb.getY()-hauteur));
-	super.setB(bb);*/
-	translater(bb.getX()-getB().getX(),bb.getY()-getB().getY());
+        /*int largeur = getLargeur();
+        int hauteur = getHauteur();
+        super.setA(new Point(bb.getX()-largeur,bb.getY()-hauteur));
+        super.setB(bb);*/
+        translater(bb.getX()-getB().getX(),bb.getY()-getB().getY());
     }
 
     // Méthode //
 
     /**
-     * Ajoute une primitive géométrique à la hitbox.
-     * @param d une primitive géométrique, un objet de type Dessin.
+     * Ajoute une forme géométrique à la hitbox.
+     * @param d une forme géométrique, un objet de type Dessin.
      */
-    public void ajouterALaHitbox(Dessin d){
-	d.translater(getA().getX(),getA().getY());
-	hitbox.add(d);
-    }
-
-    /**
-     * Supprime l'ensemble des objets contenus dans la hitbox.
-     */
-    public void supprimeHitbox(){
-	hitbox.clear();
+    public void changeFormeHitbox(Dessin d){
+        if(d instanceof Texture){
+            throw new java.lang.IllegalArgumentException("Une texture ne peut pas être utilisée comme hitbox d'une autre texture.");
+        }
+        
+        hitbox = d; 
+        hitbox.translater(getA().getX(), getA().getY());
     }
 
     /**
@@ -356,10 +398,9 @@ public class Texture extends Rectangle {
      * @param dx translation en x
      * @param dy translation en y
      */
-    public void translater(int dx, int dy){
-	super.translater(dx,dy);
-	for(Dessin d:hitbox)
-	    d.translater(dx,dy);
+    public void translater(double dx, double dy){
+        super.translater(dx,dy);
+        hitbox.translater(dx,dy);
     }
 
     /**
@@ -371,11 +412,22 @@ public class Texture extends Rectangle {
      */
     public void afficher ( Graphics g ) {
 
-	if ( getTransparent() )
-	    g.drawImage ( img, this.getA().getX(), (int)g.getClipBounds().getHeight()-this.getA().getY()-getHauteur(), getLargeur(), getHauteur(), null );
+        if ( getTransparent() )
+            g.drawImage ( 
+                img, 
+                (int) this.getA().getX(), (int) (g.getClipBounds().getHeight()-this.getA().getY()-getHauteur()), 
+                (int) getLargeur(), (int) getHauteur(),
+                null 
+            );
 
-	else
-	    g.drawImage ( img, this.getA().getX(), (int)g.getClipBounds().getHeight()-this.getA().getY()-getHauteur(), getLargeur(), getHauteur(), getCouleur(), null );
+        else
+            g.drawImage ( 
+                img, 
+                (int) this.getA().getX(), (int)(g.getClipBounds().getHeight()-this.getA().getY()-getHauteur()), 
+                (int) getLargeur(), (int) getHauteur(), 
+                getCouleur(), 
+                null 
+            );
     }
 
     /**
@@ -383,62 +435,45 @@ public class Texture extends Rectangle {
      * @return Vrai si l'objet passé en paramètre est une texture dont les caractéristiques sont les mêmes que la texture sur lequel la méthode est appelée.
      */
     public boolean equals(Object obj){
-	if (obj==this) {
-            return true;
+        if (obj==this) {
+                return true;
+            }
+
+            // Vérification du type du paramètre
+            if (obj instanceof Texture) {
+                // Vérification des valeurs des attributs
+            Texture other = (Texture) obj;
+            return super.equals(other) && img.equals(other.img);
         }
-
-        // Vérification du type du paramètre
-        if (obj instanceof Texture) {
-            // Vérification des valeurs des attributs
-	    Texture other = (Texture) obj;
-	    return super.equals(other) && img.equals(other.img);
-	}
-	return false;
+        return false;
     }
 
     /**
-     * Teste l'intersection entre une primitive géométrique et la hitbox de la texture (si elle existe).
-     * @param d une primitive géométrique
-     * @return vrai s'il y a intersection entre la primitive géométrique passé en paramètre et la hitbox de la texture, faux sinon.
+     * Vérifie si la texture intersecte un autre dessin.
+     * @param d Le dessin à tester.
+     * @return true si les deux dessins s'intersectent, false sinon.
      */
-    public boolean intersection(Dessin d){
-	if(hitbox.size()==0)
-	    return super.intersection(d);
-	
-	for(Dessin dh:hitbox)
-	    if(dh.intersection(d))
-		return true;
-	return false;
+    public boolean intersection ( Dessin d ) {
+        return hitbox.intersection(d);
     }
 
     /**
-     * Teste l'intersection entre les hitbox de deux textures (si elles existent).
-     * @param t une texture
-     * @return vrai s'il y a intersection entre la hitbox des deux textures, faux sinon.
+     * Vérifie si la texture intersecte une autre texture.
+     * @param tex La texture à tester.
+     * @return true si les deux textures s'intersectent, false sinon.
      */
-    public boolean intersection(Texture t){
-	if(hitbox.size()==0 && t.hitbox.size()==0)
-	    return super.intersection(t);
-
-	if(hitbox.size()==0 && t.hitbox.size()>0){
-	    for(Dessin dh: t.hitbox)
-		if(dh.intersection(this))
-		    return true;
-	}
-
-	if(hitbox.size()>0 && t.hitbox.size()==0){
-	    for(Dessin dh:hitbox)
-		if(dh.intersection(t))
-		    return true;
-	}
-	
-	if(hitbox.size()>0 && t.hitbox.size()>0){
-	    for(Dessin dh:hitbox)
-		for(Dessin dh2:t.hitbox)
-		    if(dh.intersection(dh2))
-			return true;
-	}
-	
-	return false;
+    public boolean intersection ( Texture tex) {
+        return hitbox.intersection(tex.hitbox);
     }
+
+    // Méthodes d'intersection pour les différentes formes géométriques. Elles font toutes appel à la méthode intersection(Dessin d) qui utilise la hitbox de la texture.
+
+    @Override
+    public boolean intersection ( Triangle t ) { return intersection((Dessin) t); }
+    
+    @Override
+    public boolean intersection ( Cercle c ) { return intersection((Dessin) c); }
+    
+    @Override
+    public boolean intersection ( Ligne l ) { return intersection((Dessin) l); }
 }

@@ -50,10 +50,10 @@ public class Triangle extends Dessin {
      * Construit un triangle noir (0,0) - (1,0) - (0,1).
      */
     public Triangle(){
-	super();
-	a = new Point();
-	b = new Point(1,0);
-	c = new Point(0,1);
+        super();
+        a = new Point();
+        b = new Point(1,0);
+        c = new Point(0,1);
     }
 
     /**
@@ -61,11 +61,11 @@ public class Triangle extends Dessin {
      * @param t Le triangle modèle
      */
     public Triangle( Triangle t ){
-	super( t.getCouleur() );
-	a = new Point ( t.a );
-	b = new Point( t.b );
-	c = new Point( t.c );
-	plein=t.plein;
+        super( t.getCouleur() );
+        a = new Point ( t.a );
+        b = new Point( t.b );
+        c = new Point( t.c );
+        plein=t.plein;
     }
 
     // Sans couleur //
@@ -80,11 +80,11 @@ public class Triangle extends Dessin {
      */
     public Triangle ( Point a, Point b, Point c ) {
 
-	super ( Couleur.NOIR );
+        super ( Couleur.NOIR );
 
-	this.a = new Point ( a );
-	this.b = new Point ( b );
-	this.c = new Point ( c );
+        this.a = new Point ( a );
+        this.b = new Point ( b );
+        this.c = new Point ( c );
     }
 
     /**
@@ -98,13 +98,13 @@ public class Triangle extends Dessin {
      */
     public Triangle ( Point a, Point b, Point c, boolean plein ) {
 
-	super ( Couleur.NOIR );
+        super ( Couleur.NOIR );
 
-	this.a = new Point ( a );
-	this.b = new Point ( b );
-	this.c = new Point ( c );
+        this.a = new Point ( a );
+        this.b = new Point ( b );
+        this.c = new Point ( c );
 
-	this.plein = plein;
+        this.plein = plein;
     }
 
     // Avec couleur //
@@ -120,11 +120,11 @@ public class Triangle extends Dessin {
      */
     public Triangle ( Couleur couleur, Point a, Point b, Point c ) {
 
-	super ( couleur );
+        super ( couleur );
 
-	this.a = new Point ( a );
-	this.b = new Point ( b );
-	this.c = new Point ( c );
+        this.a = new Point ( a );
+        this.b = new Point ( b );
+        this.c = new Point ( c );
     }
 
     /**
@@ -139,13 +139,13 @@ public class Triangle extends Dessin {
      */
     public Triangle ( Couleur couleur, Point a, Point b, Point c, boolean plein ) {
 
-	super ( couleur );
+        super ( couleur );
 
-	this.a = new Point ( a );
-	this.b = new Point ( b );
-	this.c = new Point ( c );
+        this.a = new Point ( a );
+        this.b = new Point ( b );
+        this.c = new Point ( c );
 
-	this.plein = plein;
+        this.plein = plein;
     }
 
     // Accesseurs //
@@ -159,7 +159,7 @@ public class Triangle extends Dessin {
      */
     public Point getA () {
 
-	return new Point(a);
+	    return new Point(a);
     }
 
     /**
@@ -169,7 +169,7 @@ public class Triangle extends Dessin {
      */
     public Point getB () {
 
-	return new Point(b);
+	    return new Point(b);
     }
 
     /**
@@ -179,7 +179,7 @@ public class Triangle extends Dessin {
      */
     public Point getC () {
 
-	return new Point(c);
+	    return new Point(c);
     }
 
     /**
@@ -188,7 +188,7 @@ public class Triangle extends Dessin {
      */
     public boolean getPlein () {
 
-	return plein;
+	    return plein;
     }
 
     /**
@@ -198,28 +198,28 @@ public class Triangle extends Dessin {
      */
     public BoiteEnglobante getBoiteEnglobante () {
 
-	int x[] = { a.getX(), b.getX(), c.getX() };
-	int y[] = { a.getY(), b.getY(), c.getY() };
+        double x[] = { a.getX(), b.getX(), c.getX() };
+        double y[] = { a.getY(), b.getY(), c.getY() };
 
-	int minX = x[0], minY = y[0];
-	int maxX = x[0], maxY = y[0];
+        double minX = x[0], minY = y[0];
+        double maxX = x[0], maxY = y[0];
 
-	for ( int i = 1; i < x.length; i++ ) {
+        for ( int i = 1; i < x.length; i++ ) {
 
-	    if ( x[i] < minX )
-		minX = x[i];
+            if ( x[i] < minX )
+            minX = x[i];
 
-	    if ( x[i] > maxX )
-		maxX = x[i];
+            if ( x[i] > maxX )
+            maxX = x[i];
 
-	    if ( y[i] < minY )
-		minY = y[i];
+            if ( y[i] < minY )
+            minY = y[i];
 
-	    if ( y[i] > maxY )
-		maxY = y[i];
-	}
+            if ( y[i] > maxY )
+            maxY = y[i];
+        }
 
-	return new BoiteEnglobante ( new Point ( minX, minY ), new Point ( maxX, maxY ) );
+        return new BoiteEnglobante ( new Point ( minX, minY ), new Point ( maxX, maxY ) );
     }
 
     /**
@@ -227,10 +227,10 @@ public class Triangle extends Dessin {
      * @param dx pas de translation suivant X
      * @param dy pas de translation suivant Y
      */
-    public void translater ( int dx, int dy ){
-	a.translater(dx,dy);
-	b.translater(dx,dy);
-	c.translater(dx,dy);
+    public void translater ( double dx, double dy ){
+        a.translater(dx,dy);
+        b.translater(dx,dy);
+        c.translater(dx,dy);
     }
 
     // Setter //
@@ -241,8 +241,7 @@ public class Triangle extends Dessin {
      * @see Point
      */
     public void setA ( Point a ) {
-
-	this.a = new Point(a);
+	    this.a = new Point(a);
     }
 
     /**
@@ -251,8 +250,7 @@ public class Triangle extends Dessin {
      * @see Point
      */
     public void setB ( Point b ) {
-
-	this.b = new Point(b);
+	    this.b = new Point(b);
     }
 
     /**
@@ -261,8 +259,7 @@ public class Triangle extends Dessin {
      * @see Point
      */
     public void setC ( Point c ) {
-
-	this.c = new Point(c);
+	    this.c = new Point(c);
     }
 
     /**
@@ -270,8 +267,7 @@ public class Triangle extends Dessin {
      * @param plein Défini si la forme doit être dessinée pleine ou non
      */
     public void setPlein ( boolean plein ) {
-
-	this.plein = plein;
+	    this.plein = plein;
     }
 
     // Méthodes //
@@ -285,8 +281,8 @@ public class Triangle extends Dessin {
      */
     public void afficher ( Graphics g ) {
 
-	int x[] = { a.getX(), b.getX(), c.getX() };
-	int y[] = { (int)g.getClipBounds().getHeight()-a.getY(), (int)g.getClipBounds().getHeight()-b.getY(), (int)g.getClipBounds().getHeight()-c.getY() };
+	int x[] = { (int)a.getX(), (int)b.getX(), (int)c.getX() };
+	int y[] = { (int)g.getClipBounds().getHeight()-((int)a.getY()), (int)g.getClipBounds().getHeight()-((int)b.getY()), (int)g.getClipBounds().getHeight()-((int)c.getY()) };
 
 	g.setColor ( getCouleur() );
 
@@ -313,16 +309,16 @@ public class Triangle extends Dessin {
      */
     public boolean intersection ( Ligne l ) {
 
-	boolean collision = false;
+        boolean collision = false;
 
-	Ligne AB = new Ligne ( a, b );
-	Ligne BC = new Ligne ( b, c );
-	Ligne CA = new Ligne ( c, a );
+        Ligne AB = new Ligne ( a, b );
+        Ligne BC = new Ligne ( b, c );
+        Ligne CA = new Ligne ( c, a );
 
-	if ( l.intersection ( AB ) || l.intersection ( BC ) || l.intersection ( CA ) )
-	    collision = true;
+        if ( l.intersection ( AB ) || l.intersection ( BC ) || l.intersection ( CA ) )
+            collision = true;
 
-	return collision;
+        return collision;
     }
 
     // Triangle - Rectangle //
@@ -335,35 +331,35 @@ public class Triangle extends Dessin {
      */
     public boolean intersection ( Rectangle r ) {
 
-	boolean collision = false;
+        boolean collision = false;
 
-	Point AxBy = new Point ( r.getA().getX(), r.getB().getY() );
-	Point BxAy = new Point ( r.getB().getX(), r.getA().getY() );
+        Point AxBy = new Point ( r.getA().getX(), r.getB().getY() );
+        Point BxAy = new Point ( r.getB().getX(), r.getA().getY() );
 
-	Ligne a_AxBy = new Ligne ( r.getA(), AxBy );
-	Ligne AxBy_b = new Ligne ( AxBy, r.getB() );
-	Ligne b_BxAy = new Ligne ( r.getB(), BxAy );
-	Ligne BxAy_a = new Ligne ( BxAy, r.getA() );
+        Ligne a_AxBy = new Ligne ( r.getA(), AxBy );
+        Ligne AxBy_b = new Ligne ( AxBy, r.getB() );
+        Ligne b_BxAy = new Ligne ( r.getB(), BxAy );
+        Ligne BxAy_a = new Ligne ( BxAy, r.getA() );
 
-	Ligne tAB = new Ligne ( a, b );
-	Ligne tBC = new Ligne ( b, c );
-	Ligne tCA = new Ligne ( c, a );
+        Ligne tAB = new Ligne ( a, b );
+        Ligne tBC = new Ligne ( b, c );
+        Ligne tCA = new Ligne ( c, a );
 
-	if ( ( a_AxBy.intersection ( tAB ) || a_AxBy.intersection ( tBC ) || a_AxBy.intersection ( tCA ) ) ||
-	     ( AxBy_b.intersection ( tAB ) || AxBy_b.intersection ( tBC ) || AxBy_b.intersection ( tCA ) ) ||
-	     ( b_BxAy.intersection ( tAB ) || b_BxAy.intersection ( tBC ) || b_BxAy.intersection ( tCA ) ) ||
-	     ( BxAy_a.intersection ( tAB ) || BxAy_a.intersection ( tBC ) || BxAy_a.intersection ( tCA ) ) ||
-	     ( ( a.getX() > r.getA().getX() && a.getY() > r.getA().getY() ) &&
-	       ( a.getX() < r.getB().getX() && a.getY() < r.getB().getY() ) &&
-	       ( b.getX() > r.getA().getX() && b.getY() > r.getA().getY() ) &&
-	       ( b.getX() < r.getB().getX() && b.getY() < r.getB().getY() ) &&
-	       ( c.getX() > r.getA().getX() && c.getY() > r.getA().getY() ) &&
-	       ( c.getX() < r.getB().getX() && c.getY() < r.getB().getY() )
-	       )
-	     )
-	    collision = true;
+        if ( ( a_AxBy.intersection ( tAB ) || a_AxBy.intersection ( tBC ) || a_AxBy.intersection ( tCA ) ) ||
+            ( AxBy_b.intersection ( tAB ) || AxBy_b.intersection ( tBC ) || AxBy_b.intersection ( tCA ) ) ||
+            ( b_BxAy.intersection ( tAB ) || b_BxAy.intersection ( tBC ) || b_BxAy.intersection ( tCA ) ) ||
+            ( BxAy_a.intersection ( tAB ) || BxAy_a.intersection ( tBC ) || BxAy_a.intersection ( tCA ) ) ||
+            ( ( a.getX() > r.getA().getX() && a.getY() > r.getA().getY() ) &&
+            ( a.getX() < r.getB().getX() && a.getY() < r.getB().getY() ) &&
+            ( b.getX() > r.getA().getX() && b.getY() > r.getA().getY() ) &&
+            ( b.getX() < r.getB().getX() && b.getY() < r.getB().getY() ) &&
+            ( c.getX() > r.getA().getX() && c.getY() > r.getA().getY() ) &&
+            ( c.getX() < r.getB().getX() && c.getY() < r.getB().getY() )
+            )
+            )
+            collision = true;
 
-	return collision;
+        return collision;
     }
 
     // Triangle - Ovale //
@@ -384,20 +380,20 @@ public class Triangle extends Dessin {
      */
     public boolean intersection ( Triangle t ) {
 
-	boolean collision = false;
+        boolean collision = false;
 
-	Ligne AB = new Ligne ( a, b );
-	Ligne BC = new Ligne ( b, c );
-	Ligne CA = new Ligne ( c, a );
+        Ligne AB = new Ligne ( a, b );
+        Ligne BC = new Ligne ( b, c );
+        Ligne CA = new Ligne ( c, a );
 
-	Ligne tAB = new Ligne ( t.getA(), t.getB() );
-	Ligne tBC = new Ligne ( t.getB(), t.getC() );
-	Ligne tCA = new Ligne ( t.getC(), t.getA() );
+        Ligne tAB = new Ligne ( t.getA(), t.getB() );
+        Ligne tBC = new Ligne ( t.getB(), t.getC() );
+        Ligne tCA = new Ligne ( t.getC(), t.getA() );
 
-	if ( AB.intersection ( tAB ) || BC.intersection ( tBC ) || CA.intersection ( tCA ) )
-	    collision = true;
+        if ( AB.intersection ( tAB ) || BC.intersection ( tBC ) || CA.intersection ( tCA ) )
+            collision = true;
 
-	return collision;
+        return collision;
     }
 
     /**
@@ -406,7 +402,7 @@ public class Triangle extends Dessin {
      * @return Une chaîne de caractères décrivant le triangle.
      */
     public String toString(){
-	return new String(getA()+" - "+getB()+" - "+getC());
+	    return new String(getA()+" - "+getB()+" - "+getC());
     }
 
     /**
@@ -414,16 +410,16 @@ public class Triangle extends Dessin {
      * @return Vrai si l'objet passé en paramètre est un triangle dont les caractéristiques sont les mêmes que le triangle sur lequel la méthode est appelée.
      */
     public boolean equals(Object obj){
-	if (obj==this) {
-            return true;
-        }
+        if (obj==this) {
+                return true;
+            }
 
-        // Vérification du type du paramètre
-        if (obj instanceof Triangle) {
-            // Vérification des valeurs des attributs
-             Triangle other = (Triangle) obj;
-	     return super.equals(other) && a.equals(other.a) && b.equals(other.b) && c.equals(other.c) && plein==other.plein;
-	}
-	return false;
+            // Vérification du type du paramètre
+            if (obj instanceof Triangle) {
+                // Vérification des valeurs des attributs
+                Triangle other = (Triangle) obj;
+            return super.equals(other) && a.equals(other.a) && b.equals(other.b) && c.equals(other.c) && plein==other.plein;
+        }
+        return false;
     }
 }
