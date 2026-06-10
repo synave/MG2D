@@ -372,15 +372,20 @@ public class Ovale extends Dessin {
      * On récupère d'abord la couleur de l'objet afin de le dessiner dans la bonne couleur. Ensuite on vérifie si l'Ovale est plein pour utiliser la méthode adéquate sinon on utilise l'affichage avec drawOval().
      * @param g Graphics.
      */
-    public void afficher ( Graphics g ) {
-
-	g.setColor ( this.getCouleur() );
-
-	if ( plein )
-	    g.fillOval ( (int)( o.getX() - largeur / 2 ), ( (int)g.getClipBounds().getHeight()-((int)(o.getY() - hauteur / 2 ))), (int)largeur, (int)hauteur );
-			 
-	else
-	    g.drawOval ( (int)( o.getX() - largeur / 2 ), ( (int)g.getClipBounds().getHeight()-((int)(o.getY() - hauteur / 2 ))), (int)largeur, (int)hauteur );
+    public void afficher(Graphics g) {
+	
+	g.setColor(this.getCouleur());
+	
+	int x = (int)(o.getX() - largeur / 2);
+	int y = (int)(g.getClipBounds().getHeight() - (o.getY() + hauteur / 2));
+	int w = (int)largeur;
+	int h = (int)hauteur;
+	
+	if (plein) {
+	    g.fillOval(x, y, w, h);
+	} else {
+	    g.drawOval(x, y, w, h);
+	}
     }
 
     // Intersections //

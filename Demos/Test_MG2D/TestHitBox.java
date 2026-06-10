@@ -18,13 +18,14 @@ class TestHitBox extends ApplicationMG2D{
 	vaisseau = new Texture("img/vaisseau.png", new Point(100,100), 200, 200);
 	this.getFenetre().ajouter(vaisseau);
 	c = this.getClavier();
-	ennemi = new Cercle(Couleur.ROUGE, new Point(15,500), 10, true);
+	ennemi = new Cercle(Couleur.ROUGE, new Point(15,450), 10, true);
 	this.getFenetre().ajouter(ennemi);
 	dx = 1;
 	dy = 1;
 	gh = new GroupeHitbox();
-	gh.insertion(new Rectangle(new Point(150,175),100,50));
-	gh.insertion(new Rectangle(new Point(175,150),50,100));
+	gh.insertion(new Rectangle(new Point(50,75),100,50));
+	gh.insertion(new Rectangle(new Point(75,50),50,100));
+	vaisseau.changeFormeHitbox(gh);
 	this.getFenetre().ajouter(gh);
 	temoin = new Carre(Couleur.ROUGE, new Point(0,0), 10, true);
 	this.getFenetre().ajouter(temoin);

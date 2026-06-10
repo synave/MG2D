@@ -7,20 +7,19 @@ public class Collision {
 	
     public static void main ( String [] args ) {
 		
-	final int rayon = 50;
+	final int rayon = 10;
 	final int largeur = 800;
 	final int hauteur = 600;
 		
 	int dx = 1, dy = 1, cx = 1, cy = 1;
 		
-	//Fenetre f = new Fenetre ( "Collision", largeur, hauteur );
-	FenetrePleinEcran f = new FenetrePleinEcran ( "Collision");
+	Fenetre f = new Fenetre ( "Collision", largeur, hauteur);
 		
 	Clavier clavier = f.getClavier();
 		
 	Point centre = new Point ( 200, 200 );
 
-	Carre k = new Carre ( Couleur.ROUGE, new Point ( 300, 400 ), 100, true );
+	Carre k = new Carre ( Couleur.ROUGE, new Point ( 300, 400 ), 50, true );
 		
 	Cercle c = new Cercle ( Couleur.VERT, centre, rayon , true );
 		
@@ -31,6 +30,7 @@ public class Collision {
 			
 	    try {				
 		Thread.sleep ( 5 );
+		System.out.println(c.getO());
 	    }		
 	    catch ( Exception e ) {				
 		System.out.println ( e );
@@ -44,25 +44,33 @@ public class Collision {
 		k.translater(1,0);
    
 			
-	    if ( clavier.getHautEnfoncee() && k.getA().getY() > 0 )
+	    if ( clavier.getHautEnfoncee() && k.getB().getY() < hauteur )
 		k.translater(0,1);
 			
 			
-	    if ( clavier.getBasEnfoncee() && k.getB().getY() < hauteur )
+	    if ( clavier.getBasEnfoncee() && k.getA().getY() > 0 )
 		k.translater(0,-1);
 			
 			
-	    if ( c.getO().getX() - rayon == 0 )
+	    if ( c.getO().getX() - rayon <= 0 ){
+		System.out.println("test1");
 		dx = 1;
+	    }
 			
-	    if ( c.getO().getX() + rayon == largeur )
+	    if ( c.getO().getX() + rayon >= largeur ){
+		System.out.println("test2");
 		dx = -1;
+	    }
 			
-	    if ( c.getO().getY() - rayon == 0 )
+	    if ( c.getO().getY() - rayon <= 0 ){
+		System.out.println("test3");
 		dy = 1;
+	    }
 			
-	    if ( c.getO().getY() + rayon == hauteur )
+	    if ( c.getO().getY() + rayon >= hauteur ){
+		System.out.println("test4");
 		dy = -1;
+	    }
 			
 	    if ( c.intersection ( k ) ) {
 				
