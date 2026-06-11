@@ -18,7 +18,7 @@ public abstract class ApplicationMG2D{
     // Temps d'attente entre le rafraichissement
     // de deux images consécutives. FPS = (1/delay)*1000
     private int delay;
-    private Fenetre fenetre;
+    protected Fenetre fenetre;
 
     private boolean jeuEnCours = true;
 
@@ -145,7 +145,7 @@ public abstract class ApplicationMG2D{
     /**
      * Permet de mettre fin au jeu 
      */
-    public void termineJeu(){
+    public void arretApplication(){
         jeuEnCours = false;
     }
 

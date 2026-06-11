@@ -1,4 +1,5 @@
 import MG2D.geometrie.*;
+import MG2D.*;
 
 
 
@@ -12,26 +13,26 @@ public class Test_Texture extends JFrame {
 		
 	// Variables //
 		
-	Texture background = new Texture ( "img/bob.jpg", new Point ( 0, 0 ) );
-		
-	final int largeur = background.getLargeur();
-	final int hauteur = background.getHauteur();
+	final int largeur = 800;
+	final int hauteur = 600;
+
+	Texture background = new Texture ( "./img/bob.jpg", new Point ( 0, 0 ), largeur, hauteur );
 		
 	// Fenêtre //
 		
 	Fenetre f = new Fenetre ( "Problem ?", largeur, hauteur );
 	f.setBackground ( Couleur.NOIR );
 		
-	int x = f.getMilieu().getX();
-	int y = f.getMilieu().getY();
+	double x = f.getMilieu().getX();
+	double y = f.getMilieu().getY();
 		
 	Point a = new Point ( x - 128, y - 128 );
 	Point b = new Point ( x + 128, y + 128 );
 		
 	f.ajouter ( background );
 		
-	Texture t = new Texture ( "img/t.png", a );
-	t.setTaille(400,250);
+	Texture t = new Texture ( "./img/t.png", a );
+	t.setTaille(largeur/10, hauteur/10);
 
 	f.ajouter ( t );
 		
@@ -39,27 +40,17 @@ public class Test_Texture extends JFrame {
 		
 	while ( true ) {
 			
-	    try {
-				
+	    try {		
 		Thread.sleep ( 2 );
 	    }
-			
 	    catch ( Exception e ) {
-				
 		System.out.println ( e );
 	    }
 			
-	    if ( t.getA().getX() == 0 )
-		dx = 1;
-			
-	    if ( t.getB().getX() == largeur )
-		dx = -1;
-
-	    if ( t.getA().getY() == 0 )
-		dy = 1;
-			
-	    if ( t.getB().getY() == hauteur )
-		dy = -1;
+	    if ( t.getA().getX() == 0 ) dx = 1;		
+	    if ( t.getB().getX() == largeur ) dx = -1;
+	    if ( t.getA().getY() == 0 ) dy = 1;
+	    if ( t.getB().getY() == hauteur ) dy = -1;
 			
 	    t.translater(dx,dy);
 									

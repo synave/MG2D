@@ -1,4 +1,5 @@
 import MG2D.geometrie.*;
+import MG2D.*;
 import java.awt.Font;
 
 import MG2D.Fenetre;
@@ -9,11 +10,11 @@ public class Test_Texte {
 		
 	// Variables //
 		
-	Texte t1 = new Texte ( Couleur.NOIR, "ceci est un essai de texte centré au milieu de l'écran", new Font("Calibri", Font.TYPE1_FONT, 20),  new Point(400,300), Texte.CENTRE);
+	Texte t1 = new Texte ( Couleur.NOIR, "Ceci est un essai de texte centré au milieu de l'écran", new Font("Calibri", Font.TYPE1_FONT, 20),  new Point(400,300), Texte.CENTRE);
 	Texte t2 = new Texte ( Couleur.NOIR, "Et ça un texte aligné sur le bord gauche", new Font("Calibri", Font.TYPE1_FONT, 20),  new Point(0,200), Texte.GAUCHE);
 
-	System.out.println("taille du texte du haut : "+t1.getLargeur()+"x"+t1.getHauteur());
-	System.out.println("taille du texte du bas : "+t2.getLargeur()+"x"+t2.getHauteur());
+	System.out.println("Taille du texte du haut : "+t1.getLargeur()+"x"+t1.getHauteur());
+	System.out.println("Taille du texte du bas : "+t2.getLargeur()+"x"+t2.getHauteur());
 		
 	final int largeur = 800;
 	final int hauteur = 600;

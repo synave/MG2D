@@ -1,13 +1,13 @@
 import MG2D.*;
 import MG2D.geometrie.*;
 
-class App extends ApplicationMG2D{
+class TestApplicationMG2D extends ApplicationMG2D{
     private Rectangle r;
     private Fenetre f;
     Clavier clavier;
 
     public App(){
-	super("ceci est une test", 1000, 500, 40);
+	super("Ceci est un test", 1000, 500, 40);
 	f = this.getFenetre();
 	clavier = this.getClavier();
 	r = new Rectangle(Couleur.ROUGE, new Point(10,10), new Point(100,100), true);
